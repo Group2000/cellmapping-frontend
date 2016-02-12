@@ -1,0 +1,34 @@
+REQUIREMENTS
+
+
+
+FRONTEND
+
+	Development
+		grunt-cli
+		nodejs
+		mongodb-server 
+		elasticsearch
+		rabbitmq
+
+	Production
+		nodejs
+		mongodb-server 
+		elasticsearch
+		rabbitmq
+
+	CONFIGURATION
+		Frontend (maps,webservices):
+			/Gruntfile.js
+		Backend:
+			/lib/config
+
+
+BACKEND
+
+	Run mapserver on localhost:7777
+	Run webservice-cells on localhost:3001
+	Run webservice-wifi on localhost:3002
+
+
+

@@ -1,0 +1,206 @@
+0 info it worked if it ends with ok
+1 verbose cli [ 'node', '/usr/bin/npm', 'install', '-g', 'grunt-cli' ]
+2 info using npm@1.3.6
+3 info using node@v0.10.36
+4 verbose cache add [ 'grunt-cli', null ]
+5 verbose cache add name=undefined spec="grunt-cli" args=["grunt-cli",null]
+6 verbose parsed url { protocol: null,
+6 verbose parsed url   slashes: null,
+6 verbose parsed url   auth: null,
+6 verbose parsed url   host: null,
+6 verbose parsed url   port: null,
+6 verbose parsed url   hostname: null,
+6 verbose parsed url   hash: null,
+6 verbose parsed url   search: null,
+6 verbose parsed url   query: null,
+6 verbose parsed url   pathname: 'grunt-cli',
+6 verbose parsed url   path: 'grunt-cli',
+6 verbose parsed url   href: 'grunt-cli' }
+7 silly lockFile 671ef8ac-grunt-cli grunt-cli
+8 verbose lock grunt-cli /home/mvox/.npm/671ef8ac-grunt-cli.lock
+9 silly lockFile 671ef8ac-grunt-cli grunt-cli
+10 silly lockFile 671ef8ac-grunt-cli grunt-cli
+11 verbose addNamed [ 'grunt-cli', '' ]
+12 verbose addNamed [ null, '*' ]
+13 silly lockFile d63f3d0b-grunt-cli grunt-cli@
+14 verbose lock grunt-cli@ /home/mvox/.npm/d63f3d0b-grunt-cli.lock
+15 silly addNameRange { name: 'grunt-cli', range: '*', hasData: false }
+16 verbose url raw grunt-cli
+17 verbose url resolving [ 'https://registry.npmjs.org/', './grunt-cli' ]
+18 verbose url resolved https://registry.npmjs.org/grunt-cli
+19 info trying registry request attempt 1 at 13:47:33
+20 http GET https://registry.npmjs.org/grunt-cli
+21 http 200 https://registry.npmjs.org/grunt-cli
+22 silly registry.get cb [ 200,
+22 silly registry.get   { server: 'CouchDB/1.5.0 (Erlang OTP/R16B03)',
+22 silly registry.get     etag: '"7Q15TK4Y4L679HL7KVOXTMOZX"',
+22 silly registry.get     'content-type': 'application/json',
+22 silly registry.get     'cache-control': 'max-age=300',
+22 silly registry.get     'content-length': '22384',
+22 silly registry.get     'accept-ranges': 'bytes',
+22 silly registry.get     date: 'Thu, 11 Feb 2016 12:47:33 GMT',
+22 silly registry.get     via: '1.1 varnish',
+22 silly registry.get     age: '84',
+22 silly registry.get     connection: 'keep-alive',
+22 silly registry.get     'x-served-by': 'cache-ams4129-AMS',
+22 silly registry.get     'x-cache': 'HIT',
+22 silly registry.get     'x-cache-hits': '2',
+22 silly registry.get     'x-timer': 'S1455194853.928387,VS0,VE0',
+22 silly registry.get     vary: 'Accept' } ]
+23 silly addNameRange number 2 { name: 'grunt-cli', range: '*', hasData: true }
+24 silly addNameRange versions [ 'grunt-cli',
+24 silly addNameRange   [ '0.1.0',
+24 silly addNameRange     '0.1.1',
+24 silly addNameRange     '0.1.2',
+24 silly addNameRange     '0.1.3',
+24 silly addNameRange     '0.1.4',
+24 silly addNameRange     '0.1.5',
+24 silly addNameRange     '0.1.6',
+24 silly addNameRange     '0.1.7',
+24 silly addNameRange     '0.1.8',
+24 silly addNameRange     '0.1.9',
+24 silly addNameRange     '0.1.10',
+24 silly addNameRange     '0.1.11',
+24 silly addNameRange     '0.1.12',
+24 silly addNameRange     '0.1.13' ] ]
+25 verbose addNamed [ 'grunt-cli', '0.1.13' ]
+26 verbose addNamed [ '0.1.13', '0.1.13' ]
+27 silly lockFile 28997503-grunt-cli-0-1-13 grunt-cli@0.1.13
+28 verbose lock grunt-cli@0.1.13 /home/mvox/.npm/28997503-grunt-cli-0-1-13.lock
+29 silly lockFile ab76c46e-g-grunt-cli-grunt-cli-0-1-13-tgz https://registry.npmjs.org/grunt-cli/-/grunt-cli-0.1.13.tgz
+30 verbose lock https://registry.npmjs.org/grunt-cli/-/grunt-cli-0.1.13.tgz /home/mvox/.npm/ab76c46e-g-grunt-cli-grunt-cli-0-1-13-tgz.lock
+31 verbose addRemoteTarball [ 'https://registry.npmjs.org/grunt-cli/-/grunt-cli-0.1.13.tgz',
+31 verbose addRemoteTarball   'e9ebc4047631f5012d922770c39378133cad10f4' ]
+32 info retry fetch attempt 1 at 13:47:33
+33 verbose fetch to= /home/mvox/tmp/npm-7947-lhiCMjR7/1455194853966-0.04047788050957024/tmp.tgz
+34 http GET https://registry.npmjs.org/grunt-cli/-/grunt-cli-0.1.13.tgz
+35 http 200 https://registry.npmjs.org/grunt-cli/-/grunt-cli-0.1.13.tgz
+36 verbose tar unpack /home/mvox/tmp/npm-7947-lhiCMjR7/1455194853966-0.04047788050957024/tmp.tgz
+37 silly lockFile aa73c89f-3966-0-04047788050957024-package tar:///home/mvox/tmp/npm-7947-lhiCMjR7/1455194853966-0.04047788050957024/package
+38 verbose lock tar:///home/mvox/tmp/npm-7947-lhiCMjR7/1455194853966-0.04047788050957024/package /home/mvox/.npm/aa73c89f-3966-0-04047788050957024-package.lock
+39 silly lockFile 91d368eb-3966-0-04047788050957024-tmp-tgz tar:///home/mvox/tmp/npm-7947-lhiCMjR7/1455194853966-0.04047788050957024/tmp.tgz
+40 verbose lock tar:///home/mvox/tmp/npm-7947-lhiCMjR7/1455194853966-0.04047788050957024/tmp.tgz /home/mvox/.npm/91d368eb-3966-0-04047788050957024-tmp-tgz.lock
+41 silly gunzTarPerm modes [ '755', '644' ]
+42 silly gunzTarPerm extractEntry package.json
+43 silly gunzTarPerm extractEntry .npmignore
+44 silly gunzTarPerm extractEntry README.md
+45 silly gunzTarPerm extractEntry Gruntfile.js
+46 silly gunzTarPerm extractEntry .travis.yml
+47 silly gunzTarPerm extractEntry AUTHORS
+48 silly gunzTarPerm extractEntry LICENSE-MIT
+49 silly gunzTarPerm extractEntry bin/grunt
+50 silly gunzTarPerm extractEntry completion/bash
+51 silly gunzTarPerm extractEntry completion/zsh
+52 silly gunzTarPerm extractEntry lib/cli.js
+53 silly gunzTarPerm extractEntry lib/completion.js
+54 silly gunzTarPerm extractEntry lib/info.js
+55 silly lockFile aa73c89f-3966-0-04047788050957024-package tar:///home/mvox/tmp/npm-7947-lhiCMjR7/1455194853966-0.04047788050957024/package
+56 silly lockFile aa73c89f-3966-0-04047788050957024-package tar:///home/mvox/tmp/npm-7947-lhiCMjR7/1455194853966-0.04047788050957024/package
+57 silly lockFile 91d368eb-3966-0-04047788050957024-tmp-tgz tar:///home/mvox/tmp/npm-7947-lhiCMjR7/1455194853966-0.04047788050957024/tmp.tgz
+58 silly lockFile 91d368eb-3966-0-04047788050957024-tmp-tgz tar:///home/mvox/tmp/npm-7947-lhiCMjR7/1455194853966-0.04047788050957024/tmp.tgz
+59 verbose tar pack [ '/home/mvox/.npm/grunt-cli/0.1.13/package.tgz',
+59 verbose tar pack   '/home/mvox/tmp/npm-7947-lhiCMjR7/1455194853966-0.04047788050957024/package' ]
+60 verbose tarball /home/mvox/.npm/grunt-cli/0.1.13/package.tgz
+61 verbose folder /home/mvox/tmp/npm-7947-lhiCMjR7/1455194853966-0.04047788050957024/package
+62 silly lockFile aa73c89f-3966-0-04047788050957024-package tar:///home/mvox/tmp/npm-7947-lhiCMjR7/1455194853966-0.04047788050957024/package
+63 verbose lock tar:///home/mvox/tmp/npm-7947-lhiCMjR7/1455194853966-0.04047788050957024/package /home/mvox/.npm/aa73c89f-3966-0-04047788050957024-package.lock
+64 silly lockFile cde91ba3-npm-grunt-cli-0-1-13-package-tgz tar:///home/mvox/.npm/grunt-cli/0.1.13/package.tgz
+65 verbose lock tar:///home/mvox/.npm/grunt-cli/0.1.13/package.tgz /home/mvox/.npm/cde91ba3-npm-grunt-cli-0-1-13-package-tgz.lock
+66 silly lockFile aa73c89f-3966-0-04047788050957024-package tar:///home/mvox/tmp/npm-7947-lhiCMjR7/1455194853966-0.04047788050957024/package
+67 silly lockFile aa73c89f-3966-0-04047788050957024-package tar:///home/mvox/tmp/npm-7947-lhiCMjR7/1455194853966-0.04047788050957024/package
+68 silly lockFile cde91ba3-npm-grunt-cli-0-1-13-package-tgz tar:///home/mvox/.npm/grunt-cli/0.1.13/package.tgz
+69 silly lockFile cde91ba3-npm-grunt-cli-0-1-13-package-tgz tar:///home/mvox/.npm/grunt-cli/0.1.13/package.tgz
+70 silly lockFile f571b3a5-vox-npm-grunt-cli-0-1-13-package /home/mvox/.npm/grunt-cli/0.1.13/package
+71 verbose lock /home/mvox/.npm/grunt-cli/0.1.13/package /home/mvox/.npm/f571b3a5-vox-npm-grunt-cli-0-1-13-package.lock
+72 silly lockFile f571b3a5-vox-npm-grunt-cli-0-1-13-package /home/mvox/.npm/grunt-cli/0.1.13/package
+73 silly lockFile f571b3a5-vox-npm-grunt-cli-0-1-13-package /home/mvox/.npm/grunt-cli/0.1.13/package
+74 verbose tar unpack /home/mvox/.npm/grunt-cli/0.1.13/package.tgz
+75 silly lockFile fd5d3d5f-vox-npm-grunt-cli-0-1-13-package tar:///home/mvox/.npm/grunt-cli/0.1.13/package
+76 verbose lock tar:///home/mvox/.npm/grunt-cli/0.1.13/package /home/mvox/.npm/fd5d3d5f-vox-npm-grunt-cli-0-1-13-package.lock
+77 silly lockFile cde91ba3-npm-grunt-cli-0-1-13-package-tgz tar:///home/mvox/.npm/grunt-cli/0.1.13/package.tgz
+78 verbose lock tar:///home/mvox/.npm/grunt-cli/0.1.13/package.tgz /home/mvox/.npm/cde91ba3-npm-grunt-cli-0-1-13-package-tgz.lock
+79 silly gunzTarPerm modes [ '755', '644' ]
+80 silly gunzTarPerm extractEntry package.json
+81 silly gunzTarPerm extractEntry .npmignore
+82 silly gunzTarPerm extractEntry README.md
+83 silly gunzTarPerm extractEntry Gruntfile.js
+84 silly gunzTarPerm extractEntry .travis.yml
+85 silly gunzTarPerm extractEntry AUTHORS
+86 silly gunzTarPerm extractEntry LICENSE-MIT
+87 silly gunzTarPerm extractEntry bin/grunt
+88 silly gunzTarPerm extractEntry completion/bash
+89 silly gunzTarPerm extractEntry completion/zsh
+90 silly gunzTarPerm extractEntry lib/cli.js
+91 silly gunzTarPerm extractEntry lib/completion.js
+92 silly gunzTarPerm extractEntry lib/info.js
+93 silly lockFile fd5d3d5f-vox-npm-grunt-cli-0-1-13-package tar:///home/mvox/.npm/grunt-cli/0.1.13/package
+94 silly lockFile fd5d3d5f-vox-npm-grunt-cli-0-1-13-package tar:///home/mvox/.npm/grunt-cli/0.1.13/package
+95 silly lockFile cde91ba3-npm-grunt-cli-0-1-13-package-tgz tar:///home/mvox/.npm/grunt-cli/0.1.13/package.tgz
+96 silly lockFile cde91ba3-npm-grunt-cli-0-1-13-package-tgz tar:///home/mvox/.npm/grunt-cli/0.1.13/package.tgz
+97 verbose chmod /home/mvox/.npm/grunt-cli/0.1.13/package.tgz 644
+98 verbose chown /home/mvox/.npm/grunt-cli/0.1.13/package.tgz [ 1000, 1000 ]
+99 silly lockFile ab76c46e-g-grunt-cli-grunt-cli-0-1-13-tgz https://registry.npmjs.org/grunt-cli/-/grunt-cli-0.1.13.tgz
+100 silly lockFile ab76c46e-g-grunt-cli-grunt-cli-0-1-13-tgz https://registry.npmjs.org/grunt-cli/-/grunt-cli-0.1.13.tgz
+101 silly lockFile 28997503-grunt-cli-0-1-13 grunt-cli@0.1.13
+102 silly lockFile 28997503-grunt-cli-0-1-13 grunt-cli@0.1.13
+103 silly lockFile d63f3d0b-grunt-cli grunt-cli@
+104 silly lockFile d63f3d0b-grunt-cli grunt-cli@
+105 silly resolved [ { name: 'grunt-cli',
+105 silly resolved     description: 'The grunt command line interface.',
+105 silly resolved     version: '0.1.13',
+105 silly resolved     author: { name: 'Grunt Team' },
+105 silly resolved     homepage: 'http://gruntjs.com/',
+105 silly resolved     repository: { type: 'git', url: 'git://github.com/gruntjs/grunt-cli.git' },
+105 silly resolved     bugs: { url: 'http://github.com/gruntjs/grunt-cli/issues' },
+105 silly resolved     licenses: [ [Object] ],
+105 silly resolved     bin: { grunt: 'bin/grunt' },
+105 silly resolved     engines: { node: '>= 0.8.0' },
+105 silly resolved     scripts: { test: 'node bin/grunt test' },
+105 silly resolved     preferGlobal: true,
+105 silly resolved     dependencies: { nopt: '~1.0.10', 'findup-sync': '~0.1.0', resolve: '~0.3.1' },
+105 silly resolved     devDependencies: { grunt: '~0.4.0', 'grunt-contrib-jshint': '~0.2.0' },
+105 silly resolved     contributors: [ [Object], [Object], [Object], [Object] ],
+105 silly resolved     readme: '# grunt-cli [![Build Status](https://secure.travis-ci.org/gruntjs/grunt-cli.png?branch=master)](http://travis-ci.org/gruntjs/grunt-cli)\n> The Grunt command line interface.\n\nInstall this globally and you\'ll have access to the `grunt` command anywhere on your system.\n\n```shell\nnpm install -g grunt-cli\n```\n\n**Note:** The job of the `grunt` command is to load and run the version of Grunt you have installed locally to your project, irrespective of its version.  Starting with Grunt v0.4, you should never install Grunt itself globally.  For more information about why, [please read this](http://blog.nodejs.org/2011/03/23/npm-1-0-global-vs-local-installation).\n\nSee the [Getting Started](http://gruntjs.com/getting-started) guide for more information.\n\n## Shell tab auto-completion\nTo enable tab auto-completion for Grunt, add one of the following lines to your `~/.bashrc` or `~/.zshrc` file.\n\n```bash\n# Bash, ~/.bashrc\neval "$(grunt --completion=bash)"\n```\n\n```bash\n# Zsh, ~/.zshrc\neval "$(grunt --completion=zsh)"\n```\n\n## Installing grunt-cli locally\nIf you prefer the idiomatic Node.js method to get started with a project (`npm install && npm test`) then install grunt-cli locally with `npm install grunt-cli --save-dev`. Then add a script to your `package.json` to run the associated grunt command: `"scripts": { "test": "grunt test" } `. Now `npm test` will use the locally installed `./node_modules/.bin/grunt` executable to run your Grunt commands.\n\nTo read more about npm scripts, please visit the npm docs: [https://npmjs.org/doc/misc/npm-scripts.html](https://npmjs.org/doc/misc/npm-scripts.html).\n',
+105 silly resolved     readmeFilename: 'README.md',
+105 silly resolved     _id: 'grunt-cli@0.1.13',
+105 silly resolved     dist: { shasum: '1ffcd7a04189110edf9da89ef7f0c12f7c89da98' },
+105 silly resolved     _from: 'grunt-cli@',
+105 silly resolved     _resolved: 'https://registry.npmjs.org/grunt-cli/-/grunt-cli-0.1.13.tgz' } ]
+106 info install grunt-cli@0.1.13 into /usr/lib
+107 info installOne grunt-cli@0.1.13
+108 info /usr/lib/node_modules/grunt-cli unbuild
+109 verbose tar unpack /home/mvox/.npm/grunt-cli/0.1.13/package.tgz
+110 silly lockFile 2107e595-r-usr-lib-node-modules-grunt-cli tar:///usr/lib/node_modules/grunt-cli
+111 verbose lock tar:///usr/lib/node_modules/grunt-cli /home/mvox/.npm/2107e595-r-usr-lib-node-modules-grunt-cli.lock
+112 silly lockFile cde91ba3-npm-grunt-cli-0-1-13-package-tgz tar:///home/mvox/.npm/grunt-cli/0.1.13/package.tgz
+113 verbose lock tar:///home/mvox/.npm/grunt-cli/0.1.13/package.tgz /home/mvox/.npm/cde91ba3-npm-grunt-cli-0-1-13-package-tgz.lock
+114 silly gunzTarPerm modes [ '755', '644' ]
+115 error Error: EACCES, mkdir '/usr/lib/node_modules/grunt-cli'
+115 error  { [Error: EACCES, mkdir '/usr/lib/node_modules/grunt-cli']
+115 error   errno: 3,
+115 error   code: 'EACCES',
+115 error   path: '/usr/lib/node_modules/grunt-cli',
+115 error   fstream_type: 'Directory',
+115 error   fstream_path: '/usr/lib/node_modules/grunt-cli',
+115 error   fstream_class: 'DirWriter',
+115 error   fstream_stack:
+115 error    [ '/usr/lib/node_modules/fstream/lib/dir-writer.js:36:23',
+115 error      '/usr/lib/node_modules/mkdirp/index.js:37:53',
+115 error      'Object.oncomplete (fs.js:108:15)' ] }
+116 error Please try running this command again as root/Administrator.
+117 error System Linux 3.10.0-327.el7.x86_64
+118 error command "node" "/usr/bin/npm" "install" "-g" "grunt-cli"
+119 error cwd /opt/g2k/cellmapping-frontend
+120 error node -v v0.10.36
+121 error npm -v 1.3.6
+122 error path /usr/lib/node_modules/grunt-cli
+123 error fstream_path /usr/lib/node_modules/grunt-cli
+124 error fstream_type Directory
+125 error fstream_class DirWriter
+126 error code EACCES
+127 error errno 3
+128 error stack Error: EACCES, mkdir '/usr/lib/node_modules/grunt-cli'
+129 error fstream_stack /usr/lib/node_modules/fstream/lib/dir-writer.js:36:23
+129 error fstream_stack /usr/lib/node_modules/mkdirp/index.js:37:53
+129 error fstream_stack Object.oncomplete (fs.js:108:15)
+130 verbose exit [ 3, true ]
