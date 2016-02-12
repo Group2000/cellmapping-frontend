@@ -1,0 +1,607 @@
+<div id="page-wrapper">
+
+    <div class="container-fluid">
+
+        <!-- Page Heading -->
+ 
+        <div class="row">
+            <div class="col-lg-12">
+                <h1 class="page-header">
+                    {{activeView.name}}
+                </h1>
+                <ol class="breadcrumb">
+                    <li >
+                        <i class="fa fa-cubes"></i> Sets
+                    </li>
+                    <li class="active">
+                        <i class="fa fa-cube"></i> {{activeView.name}} 
+                    </li>
+                </ol>
+            </div>
+        </div>
+        <!-- /.row -->
+    
+
+
+        <div ng-repeat="alert in alerts">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="alert alert-{{alert.type}} alert-dismissable">
+                    <!-- <div class="alert alert-info alert-dismissable"> -->
+                        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                        <i class="fa fa-info-circle"></i>  {{alert.msg}}
+                    </div>
+                </div>
+            </div>
+        </div>
+
+<!-- panels-->
+		<div class="row">
+
+            <div class="col-lg-2 col-md-4">
+                <div class="panel panel-grey">
+                    <div class="panel-heading">
+                        <div class="row">
+                            <div class="col-xs-3">
+                                <i class="fa fa-clock-o fa-5x"></i>
+                            </div>
+                            <div class="col-xs-9 text-right">
+                                <div>
+
+                                	<span ng-if="activeView.viewTimestamp">
+								{{activeView.viewTimestamp | date:'dd-MM-yyyy'}}<br>
+										{{activeView.viewTimestamp | date:'HH:mm:ss'}}
+									</span>
+									<span ng-if="!activeView.viewTimestamp" class="huge">
+											Live
+									</span>
+                                </div>
+                                <div>
+                                	<span ng-if="!activeView.viewTimestamp">
+										RealTime
+									</span>
+                                	<span ng-if="activeView.viewTimestamp">
+										Historisch
+									</span>
+								</div>
+                            </div>
+                        </div>
+                    </div>
+                    <a  ng-if="activeView.viewTimestamp" ng-click="realtime()">
+                        <div class="panel-footer">
+                            <span class="pull-left" >Switch naar RealTime view</span>
+                            <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+                            <div class="clearfix"></div>
+                        </div>
+                    </a>
+                    
+                    <div class="panel-footer" ng-if="!activeView.viewTimestamp">
+                        <span class="pull-left" > <br></span>
+
+                        <div class="clearfix"></div>
+                    </div>
+                    
+                </div>
+            </div>
+            <div class="col-lg-2 col-md-4">
+                <div class="panel panel-red">
+                    <div class="panel-heading">
+                        <div class="row">
+                        	<bar-chart data="data" height="options.height" width="options.width" options="options.options"></bar-chart>
+                        </div>
+                    </div>
+                    <a ng-click="updateGraph()">
+                        <div class="panel-footer">
+                            <span class="pull-left">Refresh</span>
+                            <span class="pull-right"><i class="fa fa-refresh"></i></span>
+                            <div class="clearfix"></div>
+                        </div>
+                    </a>
+                </div>
+            </div>
+            <div class="col-lg-2 col-md-4">
+                <div class="panel panel-primary">
+                    <div class="panel-heading">
+                        <div class="row">
+                            <div class="col-xs-3">
+                                <i class="fa fa-crosshairs fa-5x"></i>
+                            </div>
+                            <div class="col-xs-9 text-right">
+                                <div class="huge">{{activeView.sourceCount()}}</div>
+                                <div>Bronnen</div>
+                            </div>
+                        </div>
+                    </div>
+                    <a ng-click="editBronnen=!editBronnen">
+                        <div class="panel-footer">
+                            <span class="pull-left" ng-if="!editBronnen">View Details</span>
+                            <span class="pull-left" ng-if="editBronnen">Hide Details</span>
+                            <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+                            <div class="clearfix"></div>
+                        </div>
+                    </a>
+                </div>
+            </div>
+            <div class="col-lg-2 col-md-4">
+                <div class="panel panel-green">
+                    <div class="panel-heading">
+                        <div class="row">
+                            <div class="col-xs-3">
+                                <i class="fa fa-image fa-5x"></i>
+                            </div>
+                            <div class="col-xs-9 text-right">
+                                <div class="huge">{{ activeView.locationsCount()}}</div>
+                                <div>Locaties</div>
+                            </div>
+                        </div>
+                    </div>
+                    <a ng-click="editLocations=!editLocations">
+                        <div class="panel-footer">
+                            <span class="pull-left" ng-if="!editLocations">View Details</span>
+                            <span class="pull-left" ng-if="editLocations">Hide Details</span>
+                            <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+                            <div class="clearfix"></div>
+                        </div>
+                    </a>
+                </div>
+            </div>
+             <div class="col-lg-2 col-md-4">
+                <div class="panel panel-blue">
+                    <div class="panel-heading">
+                        <div class="row">
+                            <div class="col-xs-3">
+                                <i class="fa  fa-cube fa-5x"></i>
+                            </div>
+                            <div class="col-xs-9 text-right">
+                                <div class="huge">{{activeView.subsetCount()}}</div>
+                                <div>Sets</div>
+                            </div>
+                        </div>
+                    </div>
+                    <a ng-click="editSubsets=!editSubsets">
+                        <div class="panel-footer">
+                            <span class="pull-left" ng-if="!editSubsets">View Details</span>
+                            <span class="pull-left" ng-if="editSubsets">Hide Details</span>
+                            <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+                            <div class="clearfix"></div>
+                        </div>
+                    </a>
+                </div>
+            </div>
+             
+            <div class="col-lg-2 col-md-4">
+                <div class="panel panel-yellow">
+                    <div class="panel-heading">
+                        <div class="row">
+                            <div class="col-xs-3">
+                                <i class="fa fa-bell fa-5x"></i>
+                            </div>
+                            <div class="col-xs-9 text-right">
+                                <div class="huge">0</div>
+                                <div>Alerts</div>
+                            </div>
+                        </div>
+                    </div>
+                    <a href="#">
+                        <div class="panel-footer">
+                            <span class="pull-left">View Details</span>
+                            <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+                            <div class="clearfix"></div>
+                        </div>
+                    </a>
+                </div>
+            </div>
+
+            
+           
+           
+
+        </div>
+<!-- end panels-->
+
+<!-- start edit Bronnen --> 
+		<div class="row" ng-show="editBronnen">
+            <div class="col-lg-12">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                    	<div class="row">
+ 							<div class="col-xs-9">
+                                <span class="panel-title"><i class="fa fa-crosshairs fa-fw"></i> Bronnen</span>
+                            </div>
+                            <div class="col-xs-3 text-right">
+                            	<a ng-click="editBronnen=false"><i class="fa fa-close fa-fw"></i></a>
+                            </div>
+                        </div>
+
+                      
+                    </div>
+
+
+                    <div class="panel-body">
+
+                		
+                			<table class="table-striped table table-hover">
+								<tr ng-repeat="(key,source) in activeView.sources" ng-click="selectSource(source)">
+									<td ng-if='source.tracked'><i class="fa fa-fw fa-eye"></i></td>
+									<td ng-if='!source.tracked'><i class="fa fa-fw fa-eye-slash"></i></td>
+									<td>{{source.category}}</td>
+										<td>{{source.id}}</td>
+										<td>{{source.target}}</td>
+										<td>{{source.remark}}</td>
+                                        <td ng-if='source.derived'>afgeleid van subset</td>
+                                        <td ng-if='!source.derived'></td>
+									<td><button class="btn btn-xs btn-danger pull-right" ng-click="deleteSource(source)" ng-if="!source.derived"><span class=" fa fa-fw fa-trash-o"></span></button></td>
+								</tr>
+						   	</table>
+					    
+					     <div class="text-right">
+                           	 <a ng-click='openModal()' ng-controller="addviewsModalCtrl">Nieuwe Bron <i class="fa fa-arrow-circle-right"></i></a>
+                       	 </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+<!-- end edit Bronnen --> 
+<!-- start edit Locaties -->
+
+  		<div class="row" ng-show="editLocations">
+
+            <div class="col-lg-12">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                    	<div class="row">
+ 							<div class="col-xs-9">
+                                <span class="panel-title"><i class="fa fa-image fa-fw"></i> Locaties</span>
+                            </div>
+                            <div class="col-xs-3 text-right">
+                            	<a ng-click="editLocations=false"><i class="fa fa-close fa-fw"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="panel-body">
+
+                        <table class="table-striped table table-hover">
+                            <tr ng-repeat="(key,location) in activeView.locations" ng-click="location.highlight()">
+                                <td ng-if='location.tracked'><i class="fa fa-fw fa-eye"></i></td>
+                                <td ng-if='!location.tracked'><i class="fa fa-fw fa-eye-slash"></i></td>
+                                <td>{{location.name}}</td>
+                                    <td>{{location.loc.type}}</td>
+                                    <td>{{location.color}}</td>
+                                     <td ng-if='location.derived'>afgeleid van set</td>
+                                     <td ng-if='!location.derived'></td>
+                                <td><button class="btn btn-xs btn-danger pull-right" ng-click="deleteLocation(location)" ng-if="!location.derived"><span class=" fa fa-fw fa-trash-o"></span></button></td>
+                            </tr>
+                        </table>
+
+                	
+                    </div>
+                </div>
+            </div>
+        </div>
+
+<!-- end edit Locaties --> 		
+
+<!-- start edit alerteringsregels -->
+
+  		<div class="row" ng-show="editSubsets">
+
+            <div class="col-lg-12">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+						
+						<div class="row">
+							<div class="col-xs-9">
+	                            <span class="panel-title"><i class="fa fa-compass fa-fw"></i> Sets</span>
+	                        </div>
+	                        <div class="col-xs-3 text-right">
+	                          	<a ng-click="editSubsets=false"><i class="fa fa-close fa-fw"></i></a>
+	                        </div>
+                    	</div>
+                    </div>
+                    <div class="panel-body">
+                          <table class="table-striped table table-hover">
+                            <tr ng-repeat="(key,subset) in activeView.subsets" ng-click="subset.highlight()">
+                                <td ng-if='subset.highlight'><i class="fa fa-fw fa-eye"></i></td>
+                                <td ng-if='!subset.highlight'><i class="fa fa-fw fa-eye-slash"></i></td>
+                                <td>{{subset.name}}</td>
+                                <td>Bronnen: {{subset.sourceCount}}</td>
+                                <td>Locaties: {{subset.locationCount}}</td>
+                                <td ng-if='subset.derived'>afgeleid van set</td>
+                                     <td ng-if='!location.derived'></td>
+                                
+                                
+                                <td><button class="btn btn-xs btn-danger pull-right" ng-click="deleteSubset(subset)" ng-if="!subset.derived"><span class=" fa fa-fw fa-trash-o"></span></button></td>
+                            </tr>
+                        </table>
+
+					    <div class="text-right">
+ 							<a ng-click='openModal()' ng-controller="addSubsetCtrl">Nieuwe Set <i class="fa fa-arrow-circle-right"></i></a>
+                       	 </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+<!-- end edit alerteringsregels --> 
+
+
+<!--start hoofdscherm-->
+		<div class="row" >
+		    
+		    <div class="col-lg-6"  ng-controller="MapCtrl">
+				<div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h3 class="panel-title"><i class="fa fa-globe fa-fw"></i> Kaart</h3>
+                    </div>
+                    <div class="panel-body">
+						<leaflet center='center' event-broadcast='events' controls="controls" markers="markers" layers="layers" tiles="tiles" width="100%" height="480px" paths='paths' events='events'></leaflet>
+					</div>
+				</div>
+			</div>
+			<div class="col-lg-6" >
+				<div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h3 class="panel-title"><i class="fa fa-bolt fa-fw"></i> <span ng-if="!activeView.viewTimestamp">
+							Laatste live events
+
+						</span>
+						<span ng-if="activeView.viewTimestamp">
+							Laatste events op {{activeView.viewTimestamp | date:'dd-MM-yyyy HH:mm:ss'}}
+						</span>
+                        </h3>
+                    </div>
+                    <div class="panel-body">
+						
+
+						<table width=100% class="table table-striped">
+							<thead>
+								<th width='30%'></th>
+								<th width='30%'></th>
+								<th width='20%'></th>
+								<th width='20%'></th>
+							</thead>
+							<tr ng-repeat="(key,source) in activeView.sources" ng-if="source.visible===true && source.lastEvent" >
+								<td>{{source.category}} - {{source.id}}</td>
+								<td>{{source.lastEvent.timestamp | date:'dd-MM-yyyy HH:mm:ss'}}</td>
+								<td> <span ng-if="source.lastEvent.properties.speed>-1">Snelheid: {{source.lastEvent.properties.speed | number:0}} km/h</span></td> 
+								<td><span ng-if="source.lastEvent.properties.speed">Richting: {{source.lastEvent.properties.direction}}</span></td>
+								
+							</tr>
+						</table>
+					</div>
+				</div>
+					
+
+			</div>
+		</div>
+
+		<div class="row" ng-if="activeView.viewTimestamp">
+           <!--  <div class="col-lg-12">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h3 class="panel-title"><i class="fa fa-calendar fa-fw"></i> Activiteit afgelopen 24 uur </h3>
+                    </div>
+                    <div class="panel-body">
+
+                        <linechart data='chartData' options='chartOptions' mode="" width=1200 height=200 ng-click="onMouseOver()" hovered='hover(args)'></linechart>
+                    </div>
+                </div>
+            </div> -->
+            <div class="col-lg-12">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h3 class="panel-title"><i class="fa fa-calendar fa-fw"></i> Activiteit afgelopen 24 uur </h3>
+                    </div>
+                    <div class="panel-body">
+  								
+						<div class="heatmapcfg">
+							<div class="row">
+								<div class="col-lg-2">
+									<a ng-click="forward()"  ng-if="activeView.viewTimestamp" title="Play/Pause">
+			    						<span class="fa fa-fw fa-2x" ng-class="{'fa-play-circle-o':!running, 'fa-pause':running}"></span>
+			    					</a>
+			    				</div>
+								<div class="col-lg-10">
+									
+										<cal-hourheatmap config="heatmapHourlyConfig" data="heatmapHourlyData" highlight="heatmapHourlyHighlight"></cal-hourheatmap>
+									
+								</div>
+								
+			    			</div>
+						</div>
+
+                    </div>
+                </div>
+            </div>
+        </div> 
+
+		<div class="row">
+			
+            <div class="col-lg-12">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h3 class="panel-title"><i class="fa fa-calendar fa-fw"></i> Activiteit afgelopen jaar </h3>
+                    </div>
+                    <div class="panel-body">
+                    	
+							<div class="heatmapcfg">
+								<cal-heatmap config="heatmapConfig" data="heatmapData" highlight="heatmapHighlight"></cal-heatmap>
+							</div>
+						
+
+                    </div>
+                </div>
+            </div>
+            
+        </div> 
+
+
+<!--end hoofdscherm-->
+		
+      
+
+
+    </div>
+    <!-- /.container-fluid -->
+
+</div>
+<!-- /#page-wrapper -->
+
+<!-- Modal Form -->
+<div>
+    <script type="text/ng-template" id="addSubsetModal.html">
+        <div class="modal-header">
+            <h2>Nieuwe set in huidige set</h2>
+        </div>
+        <form name="sourceForm" novalidate class="form-horizontal" >
+        
+        <div class="row panel-form">
+            <div class="form-group">
+                <div class="col-md-1"></div>
+                <label class="control-label col-md-2">Beschikbare sets</label>
+                <div class="col-md-8">
+                    <select class="form-control" ng-options="subset.name for subset in availablesubsets" ng-model="selections.subset" ng-required=true ><option value=""></option></select>
+                </div>
+                <div class="col-md-1"></div>
+            </div>                
+                        
+        </div>
+        
+        <div class="modal-footer">
+            <button type="submit" class="btn btn-success" ng-click="addSubset()" ng-disabled="sourceForm.$invalid">Voeg toe</button>
+            <button type="submit" class="btn btn-warning" ng-click="cancel()">Cancel</button>
+        </div>
+        </form>
+    </script>
+</div>
+
+<!-- Modal Form -->
+<div>
+	<script type="text/ng-template" id="addSourceModal.html">
+		<div class="modal-header">
+			<h2>Nieuwe bron voor set</h2>
+		</div>
+		<form name="sourceForm" novalidate class="form-horizontal" >
+		
+		<div class="row panel-form">
+
+				<div class="form-group" ng-if="categories">
+					<div class="col-md-1"></div>
+					<label class="control-label col-md-2">Categorie</label>
+					<div class="col-md-8">
+			  			<select class="form-control" ng-options="category.category for category in categories" ng-model="selections.category" ng-change="getIds()" ng-required=true ><option value=""></option></select>
+			  		</div>
+			  		<div class="col-md-1"></div>
+		  		</div>
+
+		  		<div class="form-group" ng-if="ids">
+					<div class="col-md-1"></div>
+					<label class="control-label col-md-2">Bron</label>
+					<div class="col-md-8">
+
+			  			<select ng-if="ids" class="form-control" ng-options="id.id for id in ids" ng-model="selections.id" ng-change="getPoints()" ng-required=true ></option></select>  
+			  		</div>
+			  		<div class="col-md-1"></div>
+		   		</div>
+		   		<div class="form-group" ng-if="categories">
+					<div class="col-md-1"></div>
+					<label class="control-label col-md-2">Target</label>
+					<div class="col-md-8">
+						<input type="text" class="form-control" placeholder="Target Naam" ng-model="selections.target" />
+					</div>
+			  		<div class="col-md-1"></div>
+		   		</div>
+				<div class="form-group" ng-if="categories">
+					<div class="col-md-1"></div>
+					<label class="control-label col-md-2">Opmerking</label>
+					<div class="col-md-8">
+						<input type="text" class="form-control" placeholder="Opmerking" ng-model="selections.remark" />
+					</div>
+			  		<div class="col-md-1"></div>
+		   		</div>
+			</div>
+			
+		</div>
+		
+		<div class="modal-footer">
+			<button type="submit" class="btn btn-success" ng-click="addSource()" ng-disabled="sourceForm.$invalid">Voeg toe</button>
+			<button type="submit" class="btn btn-warning" ng-click="cancel()">Cancel</button>
+		</div>
+	   	</form>
+	</script>
+</div>
+
+
+<!-- Modal Form -->
+<div>
+    <script type="text/ng-template" id="addPoint.html">
+        <div class="modal-header">
+            <h2>Nieuwe Locatie </h2>
+        </div>
+        <form name="sourceForm" novalidate class="form-horizontal" >
+        
+        <div class="row panel-form">
+                <div class="form-group">
+                    <div class="col-md-1"></div>
+                        <label class="control-label col-md-2">Naam</label>
+                        <div class="col-md-7">
+                            <input  type="text" class="form-control" placeholder="Naam" ng-model="point.name" ng-required=true ></input>
+                        </div>
+                        
+                    <div class="col-md-2"></div>
+                </div>
+
+                <div class="form-group" ng-if='isPoint'>
+                    <div class="col-md-1"></div>
+                        <label class="control-label col-md-2">Icoon</label>
+                        <div class="col-md-4">
+                            <div class="btn-group dropdown">
+
+                                <button type="button" class="btn btn-default dropdown-toggle" data-toggle="button">
+                                    Selecteer icoon <span class="caret"></span>
+                                </button>
+                                <ul class="dropdown-menu list-inline" role="menu">
+                                    <li ng-repeat="icon in icons" ng-click="selectIcon(icon)">
+                                         <span class="fa fa-fw {{icon}}"></span></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <span class="fa {{point.icon}}" style="font-size:150%"></span>
+                        </div>
+                        
+                    <div class="col-md-1"></div>
+                </div>
+                 <div class="form-group">
+                    <div class="col-md-1"></div>
+                        <label class="control-label col-md-2">Kleur</label>
+                        <div class="col-md-4">
+                            <div class="btn-group dropdown">
+
+                                <button type="button" class="btn btn-default dropdown-toggle" data-toggle="colortoggle">
+                                    Selecteer Kleur <span class="caret"></span>
+                                </button>
+                                <ul class="dropdown-menu" role="menu">
+                                    <li ng-repeat="color in colors" ng-click="selectColor(color)"><span class="fa fa-map-marker" style="color:#{{color.rgb}}"> {{color.name}}</span></li>
+                                </ul>
+                            </div>
+                            
+                        </div>
+                        <div class="col-md-3">
+                            <span class="fa fa-map-marker" style="font-size:150%;color:#{{point.color.rgb}}"></span>
+                        </div>
+                    <div class="col-md-1"></div>
+                </div>
+                    
+                
+            </div>
+            
+        </div>
+        
+        <div class="modal-footer">
+            <button type="submit" class="btn btn-success" ng-click="add()" ng-disabled="sourceForm.$invalid">Voeg Toe</button>
+            <button type="submit" class="btn btn-warning" ng-click="cancel()">Cancel</button>
+        </div>
+        </form>
+    </script>
+</div>

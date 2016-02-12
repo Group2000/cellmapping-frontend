@@ -1,0 +1,209 @@
+<div id="page-wrapper">
+
+    <div class="container-fluid" ng-class="mouseclass">
+
+        <!-- Page Heading -->
+ 
+        <div class="row">
+            <div class="col-lg-12">
+                <h1 class="page-header">
+                    Celllogger Coverage
+                </h1>
+<!--                 <ol class="breadcrumb">
+
+                    <li class="active">
+                        <i class="fa fa-compass"></i> Celllogger Coverage
+                    </li>
+                </ol> -->
+            </div>
+        </div>
+        <!-- /.row -->
+    
+
+
+        <div ng-repeat="alert in alerts">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="alert alert-{{alert.type}} alert-dismissable">
+                    <!-- <div class="alert alert-info alert-dismissable"> -->
+                        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                        <i class="fa fa-info-circle"></i>  {{alert.msg}}
+                    </div>
+                </div>
+            </div>
+        </div>
+
+<!-- panels-->
+
+
+	    <div class="row">
+			<div class="col-lg-3">
+				<div class="panel panel-primary">
+	                <div class="panel-heading">
+	                    <div class="row">
+	                        <div class="col-xs-3">
+	                            <i class="fa fa-database fa-5x"></i>
+	                        </div>
+	                        <div class="col-xs-9 text-right">
+	                            <div class="huge">{{total || 0}}</div>
+	                            <div>Metingen totaal</div>
+	                        </div>
+	                    </div>
+	                </div>
+	                <a href="#">
+	                    <div class="panel-footer">
+	                        <div class="clearfix"></div>
+	                    </div>
+	                </a>
+	            </div>
+	        </div>
+	        <div class="col-lg-3">
+				<div class="panel panel-green">
+	                <div class="panel-heading">
+	                    <div class="row">
+	                        <div class="col-xs-3">
+	                            <i class="fa fa-globe fa-5x"></i>
+	                        </div>
+	                        <div class="col-xs-9 text-right">
+	                            <div class="huge">{{measurementcount || 0}}</div>
+	                            <div>Metingen in Selectie</div>
+	                        </div>
+	                    </div>
+	                </div>
+	                <a href="#">
+	                    <div class="panel-footer">
+	                        <div class="clearfix"></div>
+	                    </div>
+	                </a>
+	            </div>
+	    	</div>
+	    	<div class="col-lg-3">
+				<div class="panel panel-red">
+	                <div class="panel-heading">
+	                    <div class="row">
+	                        <div class="col-xs-3">
+	                            <i class="fa fa-signal fa-5x"></i>
+	                        </div>
+	                        <div class="col-xs-9 text-right">
+	                            <div class="huge">{{distinctcount || 0}}</div>
+	                            <div>Unieke masten in Selectie</div>
+	                        </div>
+	                    </div>
+	                </div>
+	                <a href="#">
+	                    <div class="panel-footer">
+	                        <div class="clearfix"></div>
+	                    </div>
+	                </a>
+	            </div>
+	    	</div>
+	    	 <div class="col-lg-3">
+				<div class="panel panel-yellow">
+	                <div class="panel-heading">
+	                    <div class="row">
+	                        <div class="col-xs-3">
+	                            <i class="fa fa-search fa-5x"></i>
+	                        </div>
+	                        <div class="col-xs-9 text-right">
+	                            <div class="huge">{{s2zoom}}</div>
+	                            <div>Zoomlevel</div>
+	                        </div>
+	                    </div>
+	                </div>
+	                <a href="#">
+	                    <div class="panel-footer">
+	                        <div class="clearfix"></div>
+	                    </div>
+	                </a>
+	            </div>
+	    	</div>
+		</div>
+
+
+
+		<div class="row">
+            <div class="col-lg-6">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h3 class="panel-title"><i class="fa fa-globe fa-fw"></i> Kaart </h3>
+                    </div>
+                    <div class="panel-body">
+						<leaflet event-broadcast="events" layers="layers" controls="controls" markers="markers" bounds="bounds" center='center' paths='paths' width="100%" height="480px" geohash="geohash" geojson="geojson" ng-class='{desaturate:desaturate}'></leaflet>
+						<!-- <div ng-if="s2zoom<9"><i class="fa fa-exclamation-circle red"> </i>Data niet beschikbaar op dit zoomlevel</div> -->
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-6">
+            	<div class="row">
+            		<div class="col-lg-12">
+		                <div class="panel panel-default">
+		                    <div class="panel-heading">
+		                        <h3 class="panel-title"><i class="fa fa-filter fa-fw"></i> Filters </h3>
+		                    </div>
+		                    <div class="panel-body">
+								<form name="cellForm" novalidate class="form-horizontal" role="form"  >
+						
+							
+									<div class="form-group">
+										<label class="col-sm-2 control-label" for="inputStart">Type: </label>
+										<div class="col-sm-5">
+											<input type="radio" ng-model="search.serving" value="all"> all
+											<input  type="radio" ng-model="search.serving" value="true"> Serving 
+											<input type="radio" ng-model="search.serving" value="false"> Neighbour
+											
+										</div>
+									</div>
+									<div class="form-group">
+										<label class="col-sm-2 control-label" for="inputStart">Network: </label>
+										<div class="col-sm-5">
+											<input type="radio" ng-model="search.network" value="all">all
+											<input  type="radio" ng-model="search.network" value="GSM">GSM 
+											<input type="radio" ng-model="search.network" value="UMTS">UMTS
+											<input type="radio" ng-model="search.network" value="LTE">LTE
+										</div>
+									</div>
+									<div class="form-group">
+										<label class="col-sm-2 control-label" for="inputStart">Date: </label>
+										<div class="col-sm-5">
+											<p class="input-group">
+
+								              <input type="text" class="form-control" datepicker-popup="{{format}}" ng-model="search.dt" is-open="opened" min-date="minDate" max-date="today" datepicker-options="dateOptions" ng-disabled=true close-text="Close" />
+								              <span class="input-group-btn">
+								                <button type="button" class="btn btn-default" ng-click="openCalendar($event)"><i class="glyphicon glyphicon-calendar"></i></button>
+								              </span>
+								            </p>
+								        </div>
+						            </div>
+						           <!--  <div class="form-group">
+						            	<label class="col-sm-2 control-label" for="inputStart">Range in days: </label>
+										<div class="col-sm-5">
+						              		<input type="text" class="form-control" ng-model="search.range"/>
+						              	</div>
+						            </div> -->
+						            <div class="form-group">
+										<label class="col-sm-2 control-label" for="inputStart">Provider: </label>
+										<div class="col-sm-5">
+
+
+											<select class="form-control" ng-options="provider.mccmnc as provider.name for provider in providers" ng-model="search.mccmnc"><option value=""></option></select>
+
+										</div>
+									</div>
+						           
+									</div>
+
+							</form>
+
+		                    </div>
+		                </div>
+
+            </div>
+
+
+        </div> 
+	
+    </div>
+    <!-- /.container-fluid -->
+
+</div>
+<!-- /#page-wrapper -->

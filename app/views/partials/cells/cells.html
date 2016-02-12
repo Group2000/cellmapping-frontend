@@ -1,0 +1,199 @@
+<div id="page-wrapper">
+
+    <div class="container-fluid">
+
+ <!-- Page Heading -->
+ 
+        <div class="row">
+            <div class="col-lg-12">
+                <h1 class="page-header">
+                    Cell Search
+                </h1>
+
+            </div>
+        </div>
+
+    
+
+
+        <div ng-repeat="alert in alerts">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="alert alert-{{alert.type}} alert-dismissable">
+                    <!-- <div class="alert alert-info alert-dismissable"> -->
+                        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                        <i class="fa fa-info-circle"></i>  {{alert.msg}}
+                    </div>
+                </div>
+            </div>
+        </div>
+
+<!-- panels-->
+
+		<div class="row">
+            <div class="col-lg-12">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h3 class="panel-title"><i class="fa fa-filter fa-fw"></i> Zoek </h3>
+                    </div>
+                    <div class="panel-body">
+						<form name="cellForm" novalidate class="form-inline form-group"  >
+								<label class="control=label" for="inputStart">MCC: </label>
+								<input type="text" class="form-control" placeholder="MCC" ng-model="search.mcc" />
+								<label class="control=label" for="inputStart">NET: </label>
+								<input type="text" class="form-control" placeholder="MNC" ng-model="search.mnc" />
+								<label class="control=label" for="inputStart">AREA: </label>
+								<input type="text" class="form-control" placeholder="LAC" ng-model="search.lac" />
+								<label class="control=label" for="inputStart">CELL: </label>
+								 <input type="text" class="form-control" placeholder="Cell ID" ng-model="search.cid" />
+										
+
+								<button type="submit" class="btn btn-success" ng-click="getCell()" ng-disabled="cellForm.$invalid">search</button>	
+						</form>
+                    </div>
+                </div>
+            </div>
+        </div> 
+
+		<div class="row">
+            <div class="col-lg-6">
+            	
+            	<div class="row">
+            		<div class="col-lg-12">
+		                <div class="panel panel-default">
+		                    <div class="panel-heading">
+		                        <h3 class="panel-title">
+		                        	<a data-toggle="collapse" data-target="#collapseOptions" data-target="#collapseOptions" class="collapsed">
+		                        		<i class="fa fa-globe fa-fw"></i> Kaart 
+		                        	</a>
+		                        </h3>
+		                        	
+		                    </div>
+		                    <div id="collapseOptions" class="panel-collapse collapse">
+		                    	<div class="panel-body">
+									<form name="mapoptions" novalidate class="form-horizontal" role="form"  >
+										<div class="form-group">
+
+											<label class="col-sm-2 control-label" for="mapoptions">GeoHash resolutie: </label>
+											<div class="col-sm-5">
+												<input  type="radio" ng-model="search.geohashPrecision" value=7> 7 (Default)
+												<input type="radio" ng-model="search.geohashPrecision" value=8> 8 (Detail)
+												
+											</div>
+										</div>
+											<div class="form-group">
+
+											<label class="col-sm-2 control-label" for="mapoptions">Serving: </label>
+											<div class="col-sm-5">
+											
+												<input type="radio" ng-model="search.serving" > Both (Default)
+												<input  type="radio" ng-model="search.serving" ng-value='true'> Serving 
+												<input  type="radio" ng-model="search.serving" ng-value='false'> Neighbour 
+											</div>
+										</div>
+										<!-- <label class="col-sm-2 control-label" for="mapoptions">Export: </label>
+										<button class='btn btn-xs ' lazy-load="true" ng-csv='exportCellsCSV()' filename='cells.csv'
+										csv-header='["mcc","mnc","lac","cid","signal","network","lat","lon"]'> CSV</button> 
+										<button class="btn btn-xs" id="cells" ng-click="exportCellsJSON()" ng-href="{{url}}">JSON</button>
+										<small>(Exports all cells based on signal strength within map boundaries)</small>
+										 -->
+									
+									</form>
+								</div>
+							</div>
+		                    <div class="panel-body">
+				    	
+								<leaflet event-broadcast="events" layers="layers" controls="controls" markers="markers" center='center' paths='paths' width="100%" height="480px"  geojson="geojson" bounds="bounds"  ng-class='{desaturate:desaturate}' geohash="geohash" cellgeohash="cellgeohash" ></leaflet>
+								<div class="text-right">
+										<a ng-click='clearMarkers()'>Clear Map <i class="fa fa-arrow-circle-right"></i></a>
+										
+                   					</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				
+				<div class="row" ng-if="details">
+            		<div class="col-lg-12">
+		                <div class="panel panel-default">
+		                    <div class="panel-heading">
+		                    	Cell Details
+		                    </div>
+		                     <div class="panel-body">
+
+			                     <ul class='list-group'>
+				                     <li class='list-group-item' ng-repeat='bucket in details.aggregations.distinctsource.buckets'>
+					                     <span class="badge">{{bucket.doc_count}}</span>
+					                     <h4 class="list-group-item-heading">{{bucket.key}}</h4>
+					                     <p class="list-group-item-text">
+					                     	<dl class="dl-horizontal">
+					                     		<dt>First Seen</dt>
+					                     		<dd>{{bucket.firstSeen.value| date:'dd-MM-yyyy'}}</dd>
+					                     		<dt>last Seen</dt>
+					                     		<dd>{{bucket.lastSeen.value| date:'dd-MM-yyyy'}}</dd>
+					                     		<dt ng-if='bucket.maxSignal.value'>Best Signal</dt>
+					                     		<dd ng-if='bucket.maxSignal.value'>{{bucket.maxSignal.value}} dBm</dd>
+					                     		
+					                     		<dt ng-if='bucket.topsignalhit.hits.hits[0]._source.azimuth!==undefined'>Azimuth</dt>
+					                     		<dd ng-if='bucket.topsignalhit.hits.hits[0]._source.azimuth!==undefined'>{{bucket.topsignalhit.hits.hits[0]._source.azimuth}} </dd>
+
+					                     		<dt ng-if='bucket.topsignalhit.hits.hits[0]._source.beamwidth!==undefined'>Beam Width</dt>
+					                     		<dd ng-if='bucket.topsignalhit.hits.hits[0]._source.beamwidth!==undefined'>{{bucket.topsignalhit.hits.hits[0]._source.beamwidth}} </dd>
+					                     		
+					                     	</dl>
+					                     </p>
+				                     </li>
+			                     </ul>
+		                     </div>
+		                </div>
+		            </div>
+		        </div>
+			</div>
+
+			<div class="col-lg-6">
+
+				
+				<div class="row">
+					<div class="col-lg-12" ng-if="cells">
+		                <div class="panel panel-default">
+		                    <div class="panel-heading">
+		                        <h3 class="panel-title"><i class="fa fa-signal fa-fw"></i> Zoekresultaten </h3>
+		                    </div>
+		                    <div class="panel-body">
+		                    	
+	                    		<table width=100% class="table table-striped">
+									<tr>
+										<th>MCC</th>
+										<th>NET</th>
+										<th>Provider</th>
+										<th>AREA</th>
+										<th>CELL</th>
+										<th>Radio</th>
+										<th>Source</th>
+
+									</tr>
+
+									<tr ng-repeat="hit in cells" class="clickable" ng-class="{activetr:hit.selected===true}" ng-click='addToMap(hit)'>
+
+										<td>{{hit.mcc}}</td>
+										<td>{{hit.net}}</td> 
+										<td>{{hit.provider}}</td>
+										<td>{{hit.area}}</td>
+										<td>{{hit.cell}}</td>
+										
+										<td>{{hit.radio}}</td>
+										<td> {{hit.source}}</td> 
+									</tr>
+								</table>
+		                    </div>
+		                </div>
+					<div>
+				</div> <!--row-->
+			</div>
+		</div>
+
+    </div>
+    <!-- /.container-fluid -->
+
+</div>
+<!-- /#page-wrapper -->

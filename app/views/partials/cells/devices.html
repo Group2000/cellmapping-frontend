@@ -1,0 +1,135 @@
+<div id="page-wrapper">
+
+    <div class="container-fluid">
+
+        <!-- Page Heading -->
+ 
+        <div class="row">
+            <div class="col-lg-12">
+                <h1 class="page-header">
+                    Celllogger Devices
+                </h1>
+            </div>
+        </div>
+        <!-- /.row -->
+    
+
+
+        <div ng-repeat="alert in alerts">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="alert alert-{{alert.type}} alert-dismissable">
+                    <!-- <div class="alert alert-info alert-dismissable"> -->
+                        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                        <i class="fa fa-info-circle"></i>  {{alert.msg}}
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+		<div class="row" ng-if="deviceStats">
+			<div class="col-lg-12">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        
+                        <span class="pull-right">
+                            <a  ng-click='closeDetails()' class="btn btn-default btn-sm"><span class="fa fa-fw fa-times"></span></a>
+                        </span>
+                        <span>
+                        
+                    	<i class="fa fa-info-circle"></i> 
+                             <span ng-if='selectedDevice.name'> {{selectedDevice.name}} ({{selectedDevice.deviceid}})</span>
+                            <span ng-if='!selectedDevice.name'>{{selectedtDevice.deviceid}}</span>
+                        
+                    	</span>
+                        
+                    </div>
+ 					<!-- <div class="panel-body panel-green">
+ 						<div class="row">
+ 							{{deviceStats}}
+ 						</div>
+                    </div> -->
+                    <div class="panel-body">
+ 						<div class="row">
+ 							<table class="table table-striped">
+ 								<th>MCC</th>
+ 								<th>MNC</th>
+ 								<th>Network</th>
+ 								<th>First</th>
+ 								<th>Last</th>
+ 								<th>Count</th>
+ 								<tr ng-repeat="stat in deviceStats">
+ 									<td>{{stat._id.mcc}}</td>
+ 									<td>{{stat._id.mnc}}</td>
+ 									<td>{{stat._id.network}}</td>
+ 									<td>{{stat.firstSeen| date:'dd-MM-yyyy HH:mm:ss'}}</td>
+ 									<td ng-bind-html='stat.lastSeen|state'></td>
+ 									<td>{{stat.count}}</td>
+ 								</tr>
+ 							</table>
+
+ 							
+ 						</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+		<div class="row">
+			<div ng-repeat="device in devices" class="col-lg-4 col-md-8">
+                <div class="panel" ng-class="{'panel-green': device.state=='green', 'panel-yellow': device.state=='yellow', 'panel-red': device.state=='red' }" ng-include='getTemplate(device)'>
+                    
+                <script type="text/ng-template" id="display">
+                    <div class="panel-heading">
+                        <div class="row" >
+                            <span ng-if='device.name'> {{device.name}} ({{device.deviceid}})</span>
+                            <span ng-if='!device.name'>{{device.deviceid}}</span>
+                            <!-- <span class="pull-right"><a ng-click='edit(device)' class="btn btn-default btn-xs"><span class="fa fa-fw fa-edit"></span></a></span>-->
+                        </div>
+                    </div>
+                    <div class="panel-body">
+                        <div ng-if='device.remark'>Opmerking: {{device.remark}}</div>
+                        First seen: {{device.firstseen | date:'dd-MM-yyyy HH:mm:ss'}}<br>
+                        Last seen: {{device.lastseen | date:'dd-MM-yyyy HH:mm:ss'}}<br>
+                    </div>
+                    <!--<a ng-click="getStats(device.deviceid)">-->
+                        <div class="panel-footer">
+                            <span class="pull-left"><strong>Count: {{device.count}}</strong></span>
+                            <!--<span class="pull-right"><i class="fa fa-arrow-circle-right"></i>Details</span>-->
+                            <div class="clearfix"></div>
+                        </div>
+                    <!--</a>-->
+                </script>
+                
+
+                <script type="text/ng-template" id="edit">
+                    <div class="panel-heading">
+                        <div class="row" >
+                            <span >{{device.deviceid}}</span>
+                        </div>
+                    </div>
+                     <div class="panel-body">
+                        <input type="text" class="form-control" id="inputNewName" placeholder="Naam" ng-model="editDevice.name"  ng-required=true />
+                        <input type="text" class="form-control" id="inputNewremark" placeholder="Opmerking" ng-model="editDevice.remark"  ng-required=false />
+                        <div class="pull-right">
+                           <button class="btn btn-success btn-xs" ng-click="save($index)" ng-disabled="deviceform.$invalid">Save</button>
+                            <button class="btn btn-xs" ng-click="reset()">Cancel</button>
+                        </div>
+                    </div>
+                    
+                </script>
+            
+                   
+
+
+                    
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+
+</div>

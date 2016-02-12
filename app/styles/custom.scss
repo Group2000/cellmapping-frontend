@@ -1,0 +1,215 @@
+//custom css
+
+body
+{
+	padding-bottom:70px;
+}
+
+
+.ngGridLarge {
+	height: 650px;
+}
+
+.logDate{
+	color:grey;
+	font-size:90%
+}
+
+.logEntry{
+	border-bottom: 1px solid #e5e5e5;
+}
+
+.geheim{
+	padding-top:12px;
+	padding-right:20px;
+	color:red;
+	padding-bottom:12px;
+}
+
+.footer-margin-right{
+	margin-top:5px;
+	margin-right:20px;
+}
+
+.footer-margin-left{
+	margin-top:5px;
+	margin-left:20px;
+}
+
+.pagination{
+	margin: 0px;
+}
+
+.notset{
+	color:grey;
+	font-size:90%	
+}
+
+
+.clickable tr{
+	cursor:pointer;
+}
+
+.page-header {
+margin:0px;
+}
+.red{
+	color:red;
+}
+
+#searchclear {
+	position:absolute;
+	right:5px;
+	top:0px;
+	bottom:0px;
+	height:14px;
+	margin:auto;
+	font-size:14px;
+	cursor:pointer;
+	color:#ccc;
+}
+#chart svg{
+	height:400px;
+}
+.panel-heading {
+	font-size:120%;
+	font-weight:bold;
+}
+
+.dl-horizontal dt{
+	text-align:left;
+	float:left;
+	
+}
+.dl-horizontal dd{
+	margin: 0 0 0 1em;
+}
+
+.clickable {
+	cursor:pointer;
+	cursor:hand;	
+}
+
+.collapsebutton {
+	font-size:120%;
+}
+.panel-heading a{
+	text-decoration:none;
+}
+.panel-heading a:after {
+	font-family: "FontAwesome";
+	content:"\f150";
+	float:right;
+	color:grey;
+}
+.panel-heading a.collapsed:after {
+	font-family: "FontAwesome";
+	content:"\f013";
+}
+
+.alert-top {
+margin-top:-20px;	
+}
+
+
+.angular-leaflet-map {
+    width: 640px;
+    height: 400px;
+}
+
+.bottom-align-text {
+	margin-top:60px;
+}
+
+
+.green {
+	background-color:green !important;
+}
+
+/* ----------------------CAL HEATMAP---------------------- */
+
+
+text.highlight {
+	fill:black;
+	font-weight: bold;
+}
+rect.highlight{
+	stroke-width:1;
+	stroke:black;
+}
+
+text.now {
+	font-weight: bold;
+}
+
+.bigger{
+	font-size:20px;
+}
+
+
+.axis path .axis line {
+	fill:none;
+	stroke:black;
+	shape-rendering: crispEdges;
+}
+
+.axis path{
+	fill:none;
+	stroke:black;
+}
+
+.line{
+  fill: none;
+  stroke: steelblue;
+  stroke-width:1.5px;
+}
+
+
+.graphinfo {
+	font-size: 180%;
+	font-weight: bold;
+	fill:black;
+}
+.graphtext {
+	font-size: 100%;
+}
+
+.chartblack {
+	fill:black;
+}
+.chartred {
+	fill:red;
+}
+.chartwhite {
+	fill:white;
+}
+
+
+
+
+
+.container-fluid {
+	padding-left:0px;
+	padding-right:0px;
+	padding-top:0px;
+}
+
+.activetr {
+	background:orange !important;
+}
+
+.wait {
+	cursor:wait;
+}
+
+.leaflet-tile-loaded {
+
+}
+
+.desaturate .leaflet-tile-loaded{
+  -webkit-filter: brightness(1.03) grayscale(0.83) contrast(1.07);
+  -moz-filter: brightness(1.03) grayscale(0.83) contrast(1.07);
+  -ms-filter: brightness(1.03) grayscale(0.83) contrast(1.07);
+  filter: brightness(1.03) grayscale(0.83) contrast(1.07);
+
+}

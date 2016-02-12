@@ -1,0 +1,98 @@
+
+<div id="page-wrapper">
+
+    <div class="container-fluid">
+
+        <!-- Page Heading -->
+ 
+        <div class="row">
+            <div class="col-lg-12">
+                <h1 class="page-header">
+                    Monitoring
+                </h1>
+                
+            </div>
+        </div>
+        <!-- /.row -->
+    
+
+
+        <div ng-repeat="alert in alerts">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="alert alert-{{alert.type}} alert-dismissable">
+                    <!-- <div class="alert alert-info alert-dismissable"> -->
+                        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                        <i class="fa fa-info-circle"></i>  {{alert.msg}}
+                    </div>
+                </div>
+            </div>
+        </div>
+<!-- panels-->
+<!-- 
+		<div class="row" ng-if="hourGraph">
+			<div class="col-lg-12">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                    	<h3 class="panel-title"><i class="fa fa-clock fa-fw"></i> {{hourGraph.category}} </h3>
+                    	
+                    </div>
+ 					<div class="panel-body panel-green">
+ 						<div class="row">
+ 							<time-graph data="chart.data" height="hourGraphOptions.height" width="hourGraphOptions.width" colorscheme="black"options="hourChartOptions.options"></time-graph>
+ 						</div>
+                    </div>
+                </div>
+            </div>
+        </div> -->
+
+		<div class="row" ng-if="hourGraph">
+			<div class="col-lg-12">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                    	<h3 class="panel-title"><i class="fa fa-clock fa-fw"></i> {{hourGraph.category}} </h3>
+                    	
+                    </div>
+ 					<div class="panel-body panel-green">
+ 						<div class="row">
+ 							<bar-chart data="hourGraph.data" height="hourGraphOptions.height" width="hourGraphOptions.width" colorscheme="black"options="hourGraphOptions.options"></bar-chart>
+ 						</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+		<div class="row">
+			<div ng-repeat="graph in graphs" class="col-lg-4 col-md-8">
+                <div class="panel" ng-class="{'panel-green': graph.state=='green', 'panel-yellow': graph.state=='yellow', 'panel-red': graph.state=='red' }">
+                    <div class="panel-heading">
+                        <div class="row">
+                        	<bar-chart data="graph.data" height="graphOptions.height" width="graphOptions.width" colorscheme="white" options="graphOptions.options"></bar-chart>
+                        </div>
+                    </div>
+ 					<a ng-click="getHourlyData(graph.category)">
+                        <div class="panel-footer">
+                            <span class="pull-left"><strong>{{graph.category}}</strong></span>
+                            <span class="pull-right"><i class="fa fa-arrow-circle-right"></i>Details</span>
+                            <div class="clearfix"></div>
+                        </div>
+                    </a>
+
+
+                    
+                </div>
+            </div>
+        </div>
+
+
+
+    </div>
+</div>
+
+
+			<!-- <div class="col-lg-4">
+				
+				
+				<div ng-repeat="item in wwtsData">
+					{{item.date | date:'dd-MM-yy HH:mm:ss'}} : {{item.value}}
+				</div>
+			</div> -->

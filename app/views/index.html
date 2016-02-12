@@ -1,0 +1,145 @@
+
+<!doctype html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <base href="/">
+    <title></title>
+    <meta name="description" content="cellmapper">
+    <meta name="viewport" content="width=device-width">
+    <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+   
+    <!-- build:css(app) styles/leaflet.css -->
+        <link rel="stylesheet" href="bower_components/plugins/awesome-markers/leaflet.awesome-markers.css" />
+
+        <link rel="stylesheet" href="bower_components/leaflet/dist/leaflet.css" />
+        <link rel="stylesheet" href="bower_components/plugins/Leaflet.draw/leaflet.draw.css" />
+        <link rel="stylesheet" href="bower_components/plugins/Leaflet.fullscreen/leaflet.fullscreen.css" />
+        <link rel="stylesheet" href="bower_components/plugins/Leaflet.label/leaflet.label.css" />
+        <link rel="stylesheet" href="bower_components/leaflet-dvf/dist/css/dvf.css"/>
+
+        
+    <!-- endbuild -->
+
+
+    
+    
+   <!-- build:css(app) styles/vendor.css -->
+        <!-- bower:css -->
+        <link rel="stylesheet" href="bower_components/ng-grid/ng-grid.css" />
+        <link rel="stylesheet" href="bower_components/angular-bootstrap-datetimepicker/src/css/datetimepicker.css" />
+        <!-- endbower -->
+        
+    <!-- endbuild -->
+    
+    <!-- build:css({.tmp,app}) styles/main.css -->
+    <!-- Bootstrap Core CSS -->
+        <link href="styles/bootstrap.min.css" rel="stylesheet">
+        <link rel="stylesheet" href="styles/custom.css">
+        <link rel="stylesheet" href="styles/sb-admin.css">
+        <link rel="stylesheet" href="styles/font-awesome.min.css">
+        <!-- Custom Fonts -->
+        
+    <!-- endbuild -->
+    <link href="font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+ 
+  <body ng-app="celllogger" ng-controller="ApplicationCtrl">
+    <!--[if lt IE 7]>
+      <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+    <![endif]-->
+
+    <!-- Add your site or application content here -->
+    
+     <div id="wrapper">
+        <div ng-include="getNavBar()" ng-controller="NavbarCtrl"></div>
+
+    
+        <div class="container-fluid" ui-view="" ></div>
+    </div> <!-- /#wrapper -->
+
+    <!-- <div ng-if="includeBottomBar()">
+    <nav class="navbar navbar-default navbar-fixed-bottom">
+      <div class="pull-right footer-margin-right"><span class="btn btn-default "><span class="geheim">{{stg}}<span></span>
+      </div>
+      <div class="pull-left footer-margin-left"><div class="btn btn-sm" ng-class="{'btn-warning' : !connected,'btn-success' : connected, 'btn-danger' : connectionerror}" >Real Time</div>
+      </div>
+    </nav>
+    </div> -->
+
+
+    <!--[if lt IE 9]>
+    <script src="bower_components/es5-shim/es5-shim.js"></script>
+    <script src="bower_components/json3/lib/json3.min.js"></script>
+    <![endif]-->
+
+    <!-- build:js(app) scripts/vendor.js -->
+    <!-- bower:js -->
+    <script src="bower_components/jquery/dist/jquery.js"></script>
+    <script src="bower_components/angular/angular.js"></script>
+    <script src="bower_components/angular-resource/angular-resource.js"></script>
+    <script src="bower_components/angular-cookies/angular-cookies.js"></script>
+    <script src="bower_components/angular-sanitize/angular-sanitize.js"></script>
+    <script src="bower_components/angular-route/angular-route.js"></script>
+    <script src="bower_components/ng-grid/build/ng-grid.js"></script>
+    <script src="bower_components/ng-csv/build/ng-csv.min.js"></script>
+    <script src="bower_components/angular-ui-router/release/angular-ui-router.js"></script>
+    <script src="bower_components/d3/d3.js"></script>
+    <script src="bower_components/moment/moment.js"></script>
+    <script src="bower_components/angular-bootstrap-datetimepicker/src/js/datetimepicker.js"></script>
+    <script src="bower_components/angular-geohash/dist/angular-geohash.min.js"></script>
+    <!-- endbower -->
+    <script src="bower_components/angular-ui-bootstrap/dist/ui-bootstrap-0.11.0.min.js"></script>
+    <script src="bower_components/angular-ui-bootstrap/dist/ui-bootstrap-tpls-0.11.0.min.js"></script>
+    <script src="bower_components/angular-ui-bootstrap/dist/ui-bootstrap-tpls-0.11.0.min.js"></script>
+    <script src="bower_components/leaflet/dist/leaflet-src.js"></script>
+    <script src="bower_components/angular-leaflet-directive/dist/angular-leaflet-directive.js"></script>
+    <script src="bower_components/plugins/Leaflet.draw/leaflet.draw.js"></script>
+    <script src="bower_components/plugins/markercluster/leaflet.markercluster.js"></script>
+    <script src="bower_components/plugins/Leaflet.fullscreen/Leaflet.fullscreen.js"></script>
+    <script src="bower_components/plugins/Leaflet.label/leaflet.label.js"></script>
+    <script src="bower_components/plugins/awesome-markers/leaflet.awesome-markers.js"></script>
+    <script src="bower_components/plugins/layer/Marker.Rotate.js"></script>
+    <script  src="bower_components/leaflet-dvf/dist/geohash.js"></script>
+    
+    <script  src="bower_components/leaflet-dvf/dist/leaflet-dvf.min.js"></script>
+
+    <!-- endbuild -->
+
+
+
+
+        <!-- build:js({.tmp,app}) scripts/scripts.js -->
+        <script src="scripts/charts/reusable_chart.js"></script>
+        <script src="scripts/app.js"></script>
+        <script src="scripts/controllers/application.js"></script>
+        <script src="scripts/config.js"></script>
+        <script src="scripts/filters/filters.js"></script>
+        <script src="scripts/services/services.js"></script>
+        <script src="scripts/services/constants.js"></script>
+        <script src="scripts/controllers/navbar.js"></script>
+        <script src="scripts/services/graph.js"></script>
+        <script src="scripts/directives/directives.js"></script>
+        
+        <script src="scripts/directives/bargraph.js"></script>
+        <script src="scripts/directives/barChart.js"></script>
+        <script src="scripts/directives/donut.js"></script>
+        <script src="scripts/directives/linegraph.js"></script>
+        <script src="scripts/controllers/cells.js"></script>
+        <script src="scripts/controllers/wifis.js"></script>
+        <script src="scripts/controllers/wificoverage.js"></script>
+        <script src="scripts/controllers/cellplot.js"></script>
+        <script src="scripts/controllers/celllogger.js"></script>
+        <script src="scripts/controllers/devices.js"></script>
+        <script src="scripts/controllers/lacs.js"></script>
+        <script src="scripts/controllers/monitoring.js"></script>
+        <script src="scripts/js/bootstrap.js"></script>
+
+
+        <!-- endbuild -->
+
+</body>
+</html>

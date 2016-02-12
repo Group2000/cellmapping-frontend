@@ -1,0 +1,62 @@
+<div id="page-wrapper">
+
+    <div class="container-fluid">
+
+ <!-- Page Heading -->
+ 
+        <div class="row">
+            <div class="col-lg-12">
+                <h1 class="page-header">
+                    Cell Plot
+                </h1>
+             <!--    <ol class="breadcrumb">
+
+                    <li class="active">
+                        <i class="fa fa-compass"></i> Cell Search
+                    </li>
+                </ol> -->
+            </div>
+        </div>
+        <!-- /.row -->
+    
+
+
+        <div ng-repeat="alert in alerts">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="alert alert-{{alert.type}} alert-dismissable">
+                    <!-- <div class="alert alert-info alert-dismissable"> -->
+                        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                        <i class="fa fa-info-circle"></i>  {{alert.msg}}
+                    </div>
+                </div>
+            </div>
+        </div>
+
+<!-- panels-->
+
+		
+
+		<div class="row">
+            <div class="col-lg-6">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h3 class="panel-title"><i class="fa fa-globe fa-fw"></i> Kaart </h3>
+                    </div>
+                    <div class="panel-body">
+		    	
+						<leaflet event-broadcast="events" layers="layers" controls="controls" markers="markers" tiles="tiles" center='center' bounds="bounds" paths='paths' width="100%" height="480px" geojson="geojson"  ng-class='{desaturate:desaturate}'></leaflet>
+						<button  class="pull-right btn btn-success" ng-click="getCells()" ng-disabled="searchDisabled" >Get Cells</button>	
+					</div>
+				</div>
+			</div>
+
+				
+			</div>
+		</div>
+
+    </div>
+    <!-- /.container-fluid -->
+
+</div>
+<!-- /#page-wrapper -->
