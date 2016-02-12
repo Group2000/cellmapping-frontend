@@ -5,7 +5,7 @@
 
 angular.module('celllogger')
 	
-  	.controller('CellloggerCtrl', function ($scope,$http,leafletData,$filter,AlertService,MAPSERVER, MAXS2LEVEL,leafletEvents,WEBSERVICE,$interval) {
+  	.controller('CellloggerCtrl', function ($scope,$http,,leafletData,$filter,AlertService,MAPSERVER, MAXS2LEVEL,leafletEvents,WEBSERVICE,$interval) {
 		
 		$scope.desaturate=true;
   		$scope.controller='CellloggerCtrl';
@@ -22,8 +22,19 @@ angular.module('celllogger')
 	  		.success(function(result) {	
 	  			//console.log(result);
 	  			angular.forEach(result.providers.buckets,function(provider){
-	  				console.log(provider);
-	  				$scope.providers.push({name:provider.name,mccmnc:provider.key});
+//	  				var arr = provider.key.split("-");
+//	  				var mcc = arr[0];
+//	  				var net = arr[1];
+	  				$scope.providers.push({name:result.provider.key,mccmnc:provider.key});
+//	  				$http.get(WEBSERVICE + '/provider',{mcc:parseInt(mcc), net:parseInt(net)})
+//	  				.error(function(err){
+//	  		        	console.log(err);
+//	  		        })
+//	  		  		.success(function(result) {	
+//	  		  			$scope.providers.push({name:result.provider.name,mccmnc:provider.key});
+//	  		  		})
+	  				
+	  				
 	  			})
 	  			// result.forEach(function(provider){
 	  			// 	$scope.providers.push({name:provider.name,mccmnc:{mcc:provider.mcc,mnc:provider.mnc}});
