@@ -92,8 +92,8 @@ angular.module('celllogger')
 				};
 
 				if($scope.search.mccmnc){
-  					params.net=$scope.search.mccmnc.mnc;
-  					params.mcc=$scope.search.mccmnc.mcc;
+					params.net=$scope.search.mccmnc.split('-')[1];
+                    params.mcc=$scope.search.mccmnc.split('-')[0];
   				}
 	  			if($scope.search.dt){
 	  				params.timestamp=new Date($scope.search.dt).getTime();
