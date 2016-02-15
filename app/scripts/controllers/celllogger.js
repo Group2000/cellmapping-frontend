@@ -5,7 +5,7 @@
 
 angular.module('celllogger')
 	
-  	.controller('CellloggerCtrl', function ($scope,$http,,leafletData,$filter,AlertService,MAPSERVER, MAXS2LEVEL,leafletEvents,WEBSERVICE,$interval) {
+  	.controller('CellloggerCtrl', function ($scope,$http,leafletData,$filter,AlertService,MAPSERVER, MAXS2LEVEL,leafletEvents,WEBSERVICE,$interval) {
 		
 		$scope.desaturate=true;
   		$scope.controller='CellloggerCtrl';
