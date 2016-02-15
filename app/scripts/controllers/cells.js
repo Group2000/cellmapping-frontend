@@ -297,8 +297,9 @@ angular.module('celllogger')
 	  			cell.provider='unknown'
 	  		})
 	  		.success(function(result){
-	  			cell.provider=result.hits.hits[0]._source.brand + ', ' + result.hits.hits[0]._source.name;
-
+	  			if (result.hits.hits[0] != undefined){
+	  				cell.provider=result.hits.hits[0]._source.brand + ', ' + result.hits.hits[0]._source.name;
+	  			}
 	  		});	
 		}
 
