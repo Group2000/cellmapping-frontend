@@ -36,34 +36,51 @@ module.exports = function (grunt) {
         constants: {
           ENV: 'development',
           MAXS2LEVEL:16,
-          WEBSERVICE:'https://localhost:3001/v1/cells-dev',
-          WEBSERVICEWIFI:'https://localhost:3002/v1/wifimeasurements-dev',
+          WEBSERVICE:'https://192.168.202.201:3001/v1/cellmeasurements-dev',
+          WEBSERVICEWIFI:'https://192.168.202.201:3002/v1/wifimeasurements-dev',
 
-          MAPSERVER:{
+		   MAPSERVER :
 
-             mapbox_streets_basics:{
-                  url: "https://localhost:7777/tiles/mapbox-streets-basic/{z}/{x}/{y}.png",
-                  type:'xyz',
-                  name:'Mapbox Streets Basic',
-                  options: {
-                    tms: false,
-                    maxZoom: 22,
-                    opacity: 1 
-                  }
-              },
+							{
+								mapbox_streets_basics : {
+									url : 'http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
+									type : 'xyz',
+									name : 'Mapbox Streets Basic',
+									options : {
+										tms : false,
+										maxZoom : 22,
+										opacity : 1
+									}
+								},
+								osm : {
+									url : 'http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
+									type : 'xyz',
+									name : 'OpenStreetMap',
+									options : {
+										tms : false,
+										maxZoom : 22,
+										opacity : 1
+									}
+								},
+								luchtfoto : {
+									url : 'http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
+									type : 'xyz',
+									name : 'Luchtfoto',
+									options : {
+										tms : false,
+										maxZoom : 20,
+										opacity : 0.9
+									}
+								},
+								center : {
+									lat : 52.373750,
+									lng : 6.647809,
+									zoom : 10
+								}
+							}
 
-              center:{
-                 lat:52.060,
-                 lng:4.37,
-                 zoom:10
-              }
-             
-
-          }
-          
-
-        }
-      },
+						}
+					},
       production: {
         options: {
           dest: 'app/scripts/config.js',
@@ -112,13 +129,13 @@ module.exports = function (grunt) {
       },
       dev: {
         options: {
-          script: 'server.js',
+          script: 'cellmapping-frontend.js',
           debug: true
         }
       },
       prod: {
         options: {
-          script: 'dist/server.js',
+          script: 'dist/cellmapping-frontend.js',
           node_env: 'production'
         }
       }
@@ -165,7 +182,7 @@ module.exports = function (grunt) {
       },
       express: {
         files: [
-          'server.js',
+          'cellmapping-frontend.js',
           'lib/**/*.{js,json}'
         ],
         tasks: ['newer:jshint:server', 'express:dev', 'wait'],
@@ -252,7 +269,7 @@ module.exports = function (grunt) {
     // Use nodemon to run server in debug mode with an initial breakpoint
     nodemon: {
       debug: {
-        script: 'server.js',
+        script: 'cellmapping-frontend.js',
         options: {
           nodeArgs: ['--debug-brk'],
           env: {
@@ -451,7 +468,7 @@ module.exports = function (grunt) {
           dest: '<%= yeoman.dist %>',
           src: [
             'package.json',
-            'server.js',
+            'cellmapping-frontend.js',
             'lib/**/*'
           ]
         },{
