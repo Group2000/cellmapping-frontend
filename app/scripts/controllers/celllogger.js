@@ -25,7 +25,7 @@ angular.module('celllogger')
 //	  				var arr = provider.key.split("-");
 //	  				var mcc = arr[0];
 //	  				var net = arr[1];
-	  				$scope.providers.push({name:result.provider.key,mccmnc:provider.key});
+	  				$scope.providers.push({name:provider.key,mccmnc:provider.key});
 //	  				$http.get(WEBSERVICE + '/provider',{mcc:parseInt(mcc), net:parseInt(net)})
 //	  				.error(function(err){
 //	  		        	console.log(err);

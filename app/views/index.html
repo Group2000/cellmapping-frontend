@@ -1,4 +1,3 @@
-
 <!doctype html>
 <!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
 <!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
@@ -12,30 +11,30 @@
     <meta name="description" content="cellmapper">
     <meta name="viewport" content="width=device-width">
     <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
-   
+
     <!-- build:css(app) styles/leaflet.css -->
-        <link rel="stylesheet" href="bower_components/plugins/awesome-markers/leaflet.awesome-markers.css" />
+        <link rel="stylesheet" href="bower_components/plugins/Leaflet.awesome-markers/dist/leaflet.awesome-markers.css" />
 
         <link rel="stylesheet" href="bower_components/leaflet/dist/leaflet.css" />
-        <link rel="stylesheet" href="bower_components/plugins/Leaflet.draw/leaflet.draw.css" />
-        <link rel="stylesheet" href="bower_components/plugins/Leaflet.fullscreen/leaflet.fullscreen.css" />
-        <link rel="stylesheet" href="bower_components/plugins/Leaflet.label/leaflet.label.css" />
+        <link rel="stylesheet" href="bower_components/plugins/Leaflet.draw/dist/leaflet.draw.css" />
+        <link rel="stylesheet" href="bower_components/plugins/Leaflet.fullscreen/dist/leaflet.fullscreen.css" />
+        <link rel="stylesheet" href="bower_components/plugins/Leaflet.label/dist/leaflet.label.css" />
         <link rel="stylesheet" href="bower_components/leaflet-dvf/dist/css/dvf.css"/>
 
-        
+
     <!-- endbuild -->
 
 
-    
-    
+
+
    <!-- build:css(app) styles/vendor.css -->
         <!-- bower:css -->
         <link rel="stylesheet" href="bower_components/ng-grid/ng-grid.css" />
         <link rel="stylesheet" href="bower_components/angular-bootstrap-datetimepicker/src/css/datetimepicker.css" />
         <!-- endbower -->
-        
+
     <!-- endbuild -->
-    
+
     <!-- build:css({.tmp,app}) styles/main.css -->
     <!-- Bootstrap Core CSS -->
         <link href="styles/bootstrap.min.css" rel="stylesheet">
@@ -43,21 +42,21 @@
         <link rel="stylesheet" href="styles/sb-admin.css">
         <link rel="stylesheet" href="styles/font-awesome.min.css">
         <!-- Custom Fonts -->
-        
+
     <!-- endbuild -->
     <link href="font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
- 
+
   <body ng-app="celllogger" ng-controller="ApplicationCtrl">
     <!--[if lt IE 7]>
       <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
     <![endif]-->
 
     <!-- Add your site or application content here -->
-    
+
      <div id="wrapper">
         <div ng-include="getNavBar()" ng-controller="NavbarCtrl"></div>
 
-    
+
         <div class="container-fluid" ui-view="" ></div>
     </div> <!-- /#wrapper -->
 
@@ -97,14 +96,14 @@
     <script src="bower_components/angular-ui-bootstrap/dist/ui-bootstrap-tpls-0.11.0.min.js"></script>
     <script src="bower_components/leaflet/dist/leaflet-src.js"></script>
     <script src="bower_components/angular-leaflet-directive/dist/angular-leaflet-directive.js"></script>
-    <script src="bower_components/plugins/Leaflet.draw/leaflet.draw.js"></script>
-    <script src="bower_components/plugins/markercluster/leaflet.markercluster.js"></script>
-    <script src="bower_components/plugins/Leaflet.fullscreen/Leaflet.fullscreen.js"></script>
-    <script src="bower_components/plugins/Leaflet.label/leaflet.label.js"></script>
-    <script src="bower_components/plugins/awesome-markers/leaflet.awesome-markers.js"></script>
-    <script src="bower_components/plugins/layer/Marker.Rotate.js"></script>
-    <script  src="bower_components/leaflet-dvf/dist/geohash.js"></script>
-    
+    <script src="bower_components/plugins/Leaflet.draw/dist/leaflet.draw.js"></script>
+    <script src="bower_components/leaflet.markercluster/dist/leaflet.markercluster.js"></script>
+    <script src="bower_components/plugins/Leaflet.fullscreen/dist/Leaflet.fullscreen.js"></script>
+    <script src="bower_components/plugins/Leaflet.label/dist/leaflet.label.js"></script>
+    <script src="bower_components/plugins/Leaflet.awesome-markers/dist/leaflet.awesome-markers.js"></script>
+    <script src="bower_components/plugins/leaflet-plugins/layer/Marker.Rotate.js"></script>
+    <script  src="bower_components/geohash-js/geohash.js"></script>
+
     <script  src="bower_components/leaflet-dvf/dist/leaflet-dvf.min.js"></script>
 
     <!-- endbuild -->
@@ -123,7 +122,7 @@
         <script src="scripts/controllers/navbar.js"></script>
         <script src="scripts/services/graph.js"></script>
         <script src="scripts/directives/directives.js"></script>
-        
+
         <script src="scripts/directives/bargraph.js"></script>
         <script src="scripts/directives/barChart.js"></script>
         <script src="scripts/directives/donut.js"></script>
