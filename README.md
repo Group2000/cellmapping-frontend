@@ -27,6 +27,7 @@ yum -y install npm
 yum -y install git
 yum -y install ruby
 yum -y install ruby-devel
+yum -y install bzip2
 gem install json_pure
 gem update --system
 gem install compass
