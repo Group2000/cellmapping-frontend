@@ -4,7 +4,8 @@ Front-end to view measurements from LIMA Cell Monitor
 # Installation
 ##Note
 Replace ip-address in all configuration files with the ip address of the server
-The installation commands are based on a Centos 7 installation
+The installation commands are based on a Centos 7 installation<BR>
+First parts have to be installed as user root.
 ## General parts
 <pre>
 yum -y install epel-release
@@ -40,7 +41,7 @@ npm install -g bower
 </pre>
 
 ## Install software
-Not as root user!:
+Not as root user!, For this installation is /opt used as installation directory; this can be changed.
 <pre>
 git clone https://github.com/Group2000/webservice-wifi.git
 git clone https://github.com/Group2000/celldata-parser.git
@@ -84,7 +85,7 @@ angular.module('config', [])
 ;
 </pre>
 
-## Install SSL key or generate self-signed for test
+## Install SSL key or generate self-signed for test (as user root)
 <pre>
 cd /etc/ssl
 mkdir self-signed
@@ -95,7 +96,7 @@ cp /etc/ssl/self-signed/server.key /etc/ssl/self-signed/server.crt
 </pre>
 
 ## RabbitMq configuration
-* create the file /etc/rabbitmq/enabled_plugins with the following contents:
+* create the file /etc/rabbitmq/enabled_plugins with the following contents: (as user root)
 <pre>
 [rabbitmq_management].
 </pre>
@@ -105,6 +106,7 @@ service rabbitmq-server start
 </pre>
 
 ## Zookeeper installation
+As user root:
 <pre>
 wget http://apache.claz.org/zookeeper/zookeeper-3.4.6/zookeeper-3.4.6.tar.gz
 cd /usr/local/
@@ -143,14 +145,6 @@ create /dropwizard my_data
 create /dropwizard/services my_data
 </pre>
 
-## Fill provider data in database (NL operators)
-<pre>
-curl -H "Content-Type: application/json" -X POST -d '{"country":"Netherlands","iso":"NL","brand":"Vodafone","name":"Vodafone NL","mcc":204,"net":4}' -k https://ip-address:3001/v1/cellmeasurements-dev/provider
-curl -H "Content-Type: application/json" -X POST -d '{"country":"Netherlands","iso":"NL","brand":"KPN","name":"KPN NL","mcc":204,"net":8}' -k https://ip-address:3001/v1/cellmeasurements-dev/provider
-curl -H "Content-Type: application/json" -X POST -d '{"country":"Netherlands","iso":"NL","brand":"T-Mobile","name":"TMO NL","mcc":204,"net":16}' -k https://ip-address:3001/v1/cellmeasurements-dev/provider
-curl -H "Content-Type: application/json" -X POST -d '{"country":"Netherlands","iso":"NL","brand":"Tele 2","name":"Tele2 NL","mcc":204,"net":2}' -k https://ip-address:3001/v1/cellmeasurements-dev/provider
-</pre>
-
 ## PM2 configuration to run everything
 <pre>
 cd /opt/celldata-parser
@@ -177,6 +171,14 @@ and
 #super $PM2 dump
 
 Add sleep 30 in start()
+</pre>
+
+## Fill provider data in database (NL operators)
+<pre>
+curl -H "Content-Type: application/json" -X POST -d '{"country":"Netherlands","iso":"NL","brand":"Vodafone","name":"Vodafone NL","mcc":204,"net":4}' -k https://ip-address:3001/v1/cellmeasurements-dev/provider
+curl -H "Content-Type: application/json" -X POST -d '{"country":"Netherlands","iso":"NL","brand":"KPN","name":"KPN NL","mcc":204,"net":8}' -k https://ip-address:3001/v1/cellmeasurements-dev/provider
+curl -H "Content-Type: application/json" -X POST -d '{"country":"Netherlands","iso":"NL","brand":"T-Mobile","name":"TMO NL","mcc":204,"net":16}' -k https://ip-address:3001/v1/cellmeasurements-dev/provider
+curl -H "Content-Type: application/json" -X POST -d '{"country":"Netherlands","iso":"NL","brand":"Tele 2","name":"Tele2 NL","mcc":204,"net":2}' -k https://ip-address:3001/v1/cellmeasurements-dev/provider
 </pre>
 
 #Notes
