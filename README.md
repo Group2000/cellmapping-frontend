@@ -147,15 +147,15 @@ create /dropwizard/services my_data
 
 ## PM2 configuration to run everything
 <pre>
-cd /opt/celldata-parser
+cd <Install-dir>/celldata-parser
 pm2 start celldata-parser.js
-cd /opt/cellmapping-frontend
+cd ../cellmapping-frontend
 pm2 start cellmapping-frontend.js
-cd /opt/measurement-amqp2es
+cd ../measurement-amqp2es
 pm2 start measurement-amqp2es.js
-cd /opt/webservice-cells
+cd ../webservice-cells
 pm2 start webservice-cells.js
-cd /opt/webservice-wifi
+cd ../webservice-wifi
 pm2 start webservice-wifi.js
 pm2 save
 </pre>
