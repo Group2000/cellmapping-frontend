@@ -34,7 +34,7 @@
             <div class="col-lg-12">
                 <div class="panel panel-default">
                     <div class="panel-heading">
-                        <h3 class="panel-title"><i class="fa fa-filter fa-fw"></i> Zoek </h3>
+                        <h3 class="panel-title"><i class="fa fa-filter fa-fw"></i> Search </h3>
                     </div>
                     <div class="panel-body">
 						<form name="cellForm" novalidate class="form-inline form-group"  >
@@ -64,7 +64,7 @@
 		                    <div class="panel-heading">
 		                        <h3 class="panel-title">
 		                        	<a data-toggle="collapse" data-target="#collapseOptions" data-target="#collapseOptions" class="collapsed">
-		                        		<i class="fa fa-globe fa-fw"></i> Kaart 
+		                        		<i class="fa fa-globe fa-fw"></i> Map 
 		                        	</a>
 		                        </h3>
 		                        	
@@ -74,7 +74,7 @@
 									<form name="mapoptions" novalidate class="form-horizontal" role="form"  >
 										<div class="form-group">
 
-											<label class="col-sm-2 control-label" for="mapoptions">GeoHash resolutie: </label>
+											<label class="col-sm-2 control-label" for="mapoptions">GeoHash resolution: </label>
 											<div class="col-sm-5">
 												<input  type="radio" ng-model="search.geohashPrecision" value=7> 7 (Default)
 												<input type="radio" ng-model="search.geohashPrecision" value=8> 8 (Detail)
@@ -88,7 +88,7 @@
 											
 												<input type="radio" ng-model="search.serving" > Both (Default)
 												<input  type="radio" ng-model="search.serving" ng-value='true'> Serving 
-												<input  type="radio" ng-model="search.serving" ng-value='false'> Neighbour 
+												<input  type="radio" ng-model="search.serving" ng-value='false'> Neighbor 
 											</div>
 										</div>
 										<!-- <label class="col-sm-2 control-label" for="mapoptions">Export: </label>
@@ -157,7 +157,7 @@
 					<div class="col-lg-12" ng-if="cells">
 		                <div class="panel panel-default">
 		                    <div class="panel-heading">
-		                        <h3 class="panel-title"><i class="fa fa-signal fa-fw"></i> Zoekresultaten </h3>
+		                        <h3 class="panel-title"><i class="fa fa-signal fa-fw"></i> Search results </h3>
 		                    </div>
 		                    <div class="panel-body">
 		                    	
@@ -179,10 +179,9 @@
 										<td>{{hit.net}}</td> 
 										<td>{{hit.provider}}</td>
 										<td>{{hit.area}}</td>
-										<td>{{hit.cell}}</td>
-										
+										<td>{{hit.cell}}</td>								
 										<td>{{hit.radio}}</td>
-										<td> {{hit.source}}</td> 
+										<td>{{hit.source}}</td> 
 									</tr>
 								</table>
 		                    </div>

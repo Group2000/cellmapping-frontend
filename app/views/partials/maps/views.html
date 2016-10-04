@@ -58,10 +58,10 @@
                                 </div>
                                 <div>
                                 	<span ng-if="!activeView.viewTimestamp">
-										RealTime
+										Real time
 									</span>
                                 	<span ng-if="activeView.viewTimestamp">
-										Historisch
+										Historical
 									</span>
 								</div>
                             </div>
@@ -69,7 +69,7 @@
                     </div>
                     <a  ng-if="activeView.viewTimestamp" ng-click="realtime()">
                         <div class="panel-footer">
-                            <span class="pull-left" >Switch naar RealTime view</span>
+                            <span class="pull-left" >Switch to real time view</span>
                             <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
                             <div class="clearfix"></div>
                         </div>
@@ -108,7 +108,7 @@
                             </div>
                             <div class="col-xs-9 text-right">
                                 <div class="huge">{{activeView.sourceCount()}}</div>
-                                <div>Bronnen</div>
+                                <div>Sources</div>
                             </div>
                         </div>
                     </div>
@@ -131,7 +131,7 @@
                             </div>
                             <div class="col-xs-9 text-right">
                                 <div class="huge">{{ activeView.locationsCount()}}</div>
-                                <div>Locaties</div>
+                                <div>Locations</div>
                             </div>
                         </div>
                     </div>
@@ -206,7 +206,7 @@
                     <div class="panel-heading">
                     	<div class="row">
  							<div class="col-xs-9">
-                                <span class="panel-title"><i class="fa fa-crosshairs fa-fw"></i> Bronnen</span>
+                                <span class="panel-title"><i class="fa fa-crosshairs fa-fw"></i> Sources</span>
                             </div>
                             <div class="col-xs-3 text-right">
                             	<a ng-click="editBronnen=false"><i class="fa fa-close fa-fw"></i></a>
@@ -235,7 +235,7 @@
 						   	</table>
 					    
 					     <div class="text-right">
-                           	 <a ng-click='openModal()' ng-controller="addviewsModalCtrl">Nieuwe Bron <i class="fa fa-arrow-circle-right"></i></a>
+                           	 <a ng-click='openModal()' ng-controller="addviewsModalCtrl">New source <i class="fa fa-arrow-circle-right"></i></a>
                        	 </div>
                     </div>
                 </div>
@@ -251,7 +251,7 @@
                     <div class="panel-heading">
                     	<div class="row">
  							<div class="col-xs-9">
-                                <span class="panel-title"><i class="fa fa-image fa-fw"></i> Locaties</span>
+                                <span class="panel-title"><i class="fa fa-image fa-fw"></i> Locations</span>
                             </div>
                             <div class="col-xs-3 text-right">
                             	<a ng-click="editLocations=false"><i class="fa fa-close fa-fw"></i></a>
@@ -267,7 +267,7 @@
                                 <td>{{location.name}}</td>
                                     <td>{{location.loc.type}}</td>
                                     <td>{{location.color}}</td>
-                                     <td ng-if='location.derived'>afgeleid van set</td>
+                                     <td ng-if='location.derived'>derived from set</td>
                                      <td ng-if='!location.derived'></td>
                                 <td><button class="btn btn-xs btn-danger pull-right" ng-click="deleteLocation(location)" ng-if="!location.derived"><span class=" fa fa-fw fa-trash-o"></span></button></td>
                             </tr>
@@ -304,9 +304,9 @@
                                 <td ng-if='subset.highlight'><i class="fa fa-fw fa-eye"></i></td>
                                 <td ng-if='!subset.highlight'><i class="fa fa-fw fa-eye-slash"></i></td>
                                 <td>{{subset.name}}</td>
-                                <td>Bronnen: {{subset.sourceCount}}</td>
-                                <td>Locaties: {{subset.locationCount}}</td>
-                                <td ng-if='subset.derived'>afgeleid van set</td>
+                                <td>Sources: {{subset.sourceCount}}</td>
+                                <td>Locations: {{subset.locationCount}}</td>
+                                <td ng-if='subset.derived'>derived from set</td>
                                      <td ng-if='!location.derived'></td>
                                 
                                 
@@ -315,7 +315,7 @@
                         </table>
 
 					    <div class="text-right">
- 							<a ng-click='openModal()' ng-controller="addSubsetCtrl">Nieuwe Set <i class="fa fa-arrow-circle-right"></i></a>
+ 							<a ng-click='openModal()' ng-controller="addSubsetCtrl">New Set <i class="fa fa-arrow-circle-right"></i></a>
                        	 </div>
                     </div>
                 </div>
@@ -342,11 +342,11 @@
 				<div class="panel panel-default">
                     <div class="panel-heading">
                         <h3 class="panel-title"><i class="fa fa-bolt fa-fw"></i> <span ng-if="!activeView.viewTimestamp">
-							Laatste live events
+							Latest live events
 
 						</span>
 						<span ng-if="activeView.viewTimestamp">
-							Laatste events op {{activeView.viewTimestamp | date:'dd-MM-yyyy HH:mm:ss'}}
+							Latest events op {{activeView.viewTimestamp | date:'dd-MM-yyyy HH:mm:ss'}}
 						</span>
                         </h3>
                     </div>
@@ -420,7 +420,7 @@
             <div class="col-lg-12">
                 <div class="panel panel-default">
                     <div class="panel-heading">
-                        <h3 class="panel-title"><i class="fa fa-calendar fa-fw"></i> Activiteit afgelopen jaar </h3>
+                        <h3 class="panel-title"><i class="fa fa-calendar fa-fw"></i> Activities last year </h3>
                     </div>
                     <div class="panel-body">
                     	
