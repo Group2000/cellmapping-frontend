@@ -14,8 +14,8 @@ yum -y install unzip
 
 yum -y install java-1.8.0-openjdk.x86_64
 yum -y install wget
-wget https://download.elasticsearch.org/elasticsearch/release/org/elasticsearch/distribution/rpm/elasticsearch/2.2.0/elasticsearch-2.2.0.rpm
-rpm -ivh elasticsearch-2.2.0.rpm
+wget https://download.elasticsearch.org/elasticsearch/release/org/elasticsearch/distribution/rpm/elasticsearch/2.4.1/elasticsearch-2.4.1.rpm
+rpm -ivh elasticsearch-2.4.1.rpm
 systemctl enable elasticsearch.service
 service elasticsearch start
 
