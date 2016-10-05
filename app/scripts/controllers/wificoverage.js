@@ -48,7 +48,7 @@ angular.module('celllogger')
 
 
 				var params={
-					datePrecision:365,
+					datePrecision:730,
 					geohashPrecision:(gp),
 					bottom_left:[$scope.bounds.southWest.lat,$scope.bounds.southWest.lng],
 					top_right:[$scope.bounds.northEast.lat,$scope.bounds.northEast.lng]
@@ -129,7 +129,7 @@ angular.module('celllogger')
 
 		function getTotal(){
 			var params={
-				datePrecision:365
+				datePrecision:730
 			}
 
 			$http.get(WEBSERVICEWIFI+'/measurementcount',{

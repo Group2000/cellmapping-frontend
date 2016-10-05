@@ -71,7 +71,7 @@ angular.module('celllogger')
 	  			params.ssid=$scope.search.ssid;
 	  		if($scope.search.bssid)
 	  			params.bssid=$scope.search.bssid;
-	  		params.datePrecision=365;
+	  		params.datePrecision=730;
 	  		$http.get(WEBSERVICEWIFI,{
 	  			params:params
 	  		})

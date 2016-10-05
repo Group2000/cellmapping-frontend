@@ -168,7 +168,7 @@ angular.module('celllogger')
 		  			params.area=hit.area;
 		  			params.geohashPrecision=$scope.search.geohashPrecision;
 		  			params.serving=$scope.search.serving;
-		  			params.datePrecision=365;
+		  			params.datePrecision=730;
 		  			
 				$http.get(WEBSERVICE + '/cellcoverage',{
 		        	params:params
