@@ -15,9 +15,36 @@ angular
 					$scope.cells = [];
 					$scope.search = {
 						geohashPrecision : 7,
-						serving : null
+						serving : null,
+						range : 365
 					};
+					
+					$scope.dateOptions = {
+							formatYear : 'yy',
+							startingDay : 1
+						};
+					
+					$scope.formats = [ 'dd-MM-yyyy', 'yyyy/MM/dd',
+										'dd.MM.yyyy', 'shortDate' ];
+					$scope.format = $scope.formats[0];
 
+					$scope.today = function() {
+						$scope.dt = new Date();
+					};
+					$scope.today();
+
+					$scope.clear = function() {
+						$scope.search.dt = null;
+					};
+					
+					$scope.openCalendar = function($event) {
+
+						$event.preventDefault();
+						$event.stopPropagation();
+
+						$scope.opened = true;
+					};
+					
 					var icons = {};
 					icons.vodafone = {
 						type : 'awesomeMarker',
@@ -155,7 +182,14 @@ angular
 						if ($scope.search.lac) {
 							params.area = $scope.search.lac;
 						}
-
+//Not implemented in webservice
+//						if ($scope.search.dt) {
+//							params.timestamp = new Date($scope.search.dt)
+//									.getTime();
+//						}
+//						if ($scope.search.range) {
+//							params.datePrecision = $scope.search.range;
+//						}
 						// $http.defaults.useXDomain=true;
 
 						$http.get(WEBSERVICE, {
@@ -181,8 +215,14 @@ angular
 						params.area = hit.area;
 						params.geohashPrecision = $scope.search.geohashPrecision;
 						params.serving = $scope.search.serving;
-						params.datePrecision = 730;
-
+						if ($scope.search.range) {
+							params.datePrecision = $scope.search.range;
+						} else {
+							params.datePrecision = 730;
+						}
+						if ($scope.search.dt) {
+							params.timestamp = new Date($scope.search.dt)
+						}
 						$http
 								.get(WEBSERVICE + '/cellcoverage', {
 									params : params

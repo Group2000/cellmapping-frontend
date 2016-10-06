@@ -33,10 +33,40 @@
 		<div class="row">
             <div class="col-lg-12">
                 <div class="panel panel-default">
-                    <div class="panel-heading">
-                        <h3 class="panel-title"><i class="fa fa-filter fa-fw"></i> Search </h3>
-                    </div>
-                    <div class="panel-body">
+					<div class="panel-heading">
+						<h3 class="panel-title">
+							<a data-toggle="collapse" data-target="#collapseOptionsSearch"
+								data-target="#collapseOptionsSearch" class="collapsed"> <i
+								class="fa fa-globe fa-fw"></i> Search
+							</a>
+						</h3>
+					</div>
+					 <div id=collapseOptionsSearch class="panel-collapse collapse">
+		                 <div class="panel-body">
+		                 	<form name="cellForm" novalidate class="form-horizontal" role="form"  >
+		                 
+								<div class="form-group">
+									<label class="col-sm-2 control-label" for="inputStart" title="Date to query from" data-toggle="tooltip">Date: </label>
+									<div class="col-sm-5">
+										<p class="input-group">
+	
+							              <input type="text" class="form-control" datepicker-popup="{{format}}" ng-model="search.dt" is-open="opened" min-date="minDate" max-date="today" datepicker-options="dateOptions" ng-disabled=true close-text="Close" />
+							              <span class="input-group-btn">
+							                <button type="button" class="btn btn-default" ng-click="openCalendar($event)"><i class="glyphicon glyphicon-calendar"></i></button>
+							              </span>
+							            </p>
+							        </div>
+					            </div>
+					            <div class="form-group">
+					            	<label class="col-sm-2 control-label" for="inputStart" title="Range in days from the selected date" data-toggle="tooltip">Range in days: </label>
+									<div class="col-sm-5">
+					              		<input type="text" class="form-control" ng-model="search.range"/>
+					              	</div>
+					            </div>
+				            </form>
+						</div>
+					</div>
+					<div class="panel-body">
 						<form name="cellForm" novalidate class="form-inline form-group"  >
 								<label class="control=label" for="inputStart">MCC: </label>
 								<input type="text" class="form-control" placeholder="MCC" ng-model="search.mcc" />
@@ -46,8 +76,6 @@
 								<input type="text" class="form-control" placeholder="LAC" ng-model="search.lac" />
 								<label class="control=label" for="inputStart">CELL: </label>
 								 <input type="text" class="form-control" placeholder="Cell ID" ng-model="search.cid" />
-										
-
 								<button type="submit" class="btn btn-success" ng-click="getCell()" ng-disabled="cellForm.$invalid">search</button>	
 						</form>
                     </div>
