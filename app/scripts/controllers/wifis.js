@@ -8,8 +8,15 @@ angular.module('celllogger')
   	.controller('WifiCtrl', function ($scope,$http,leafletData,$filter,AlertService,MAPSERVER,WEBSERVICEWIFI,geohash) {
 
   		$scope.desaturate=false;
-  		$scope.search={};
+  		$scope.search={range:365};
 
+		$scope.dateOptions = {
+				formatYear: 'yy',
+				startingDay: 1
+			};
+
+		$scope.formats = ['dd-MM-yyyy', 'yyyy/MM/dd', 'dd.MM.yyyy', 'shortDate'];
+		$scope.format = $scope.formats[0];
 
 		function cellGeoHashOptions(){
 			var options = {
@@ -72,6 +79,14 @@ angular.module('celllogger')
 	  		if($scope.search.bssid)
 	  			params.bssid=$scope.search.bssid;
 	  		params.datePrecision=730;
+	  		
+	  		if ($scope.search.range) {
+				params.datePrecision = $scope.search.range;
+			}
+  			if($scope.search.dt){
+  				params.timestamp=new Date($scope.search.dt).getTime();
+  			}
+  			
 	  		$http.get(WEBSERVICEWIFI,{
 	  			params:params
 	  		})
@@ -98,6 +113,12 @@ angular.module('celllogger')
 				})
 				hit.selected=true
 				var params={};
+				if($scope.search.dt){
+					params.timestamp=new Date($scope.search.dt).getTime();
+				}
+				if ($scope.search.range) {
+					params.datePrecision = $scope.search.range;
+				}
 				params.bssid=hit.key;
 				$http.get(WEBSERVICEWIFI + '/bssidcoverage',{
 		        	params:params
@@ -107,13 +128,22 @@ angular.module('celllogger')
 		        })
 		        .success(function(result){
 		        	$scope.selectedWifi=result;
-		        	centerOnHash(result.aggregations.wifigrid.buckets[0].key);
-		        	angular.extend($scope,{	
-		    			cellgeohash:{
-		    				data:result.aggregations.wifigrid,
-		    				options:cellGeoHashOptions()
-		        		}
-		    		})
+		        	if (!result.aggregations.wifigrid.buckets[0]){
+		        		angular.extend($scope,{	
+			    			cellgeohash:{
+			    				data:null,
+			    				options:null
+			        		}
+			    		})
+		        	} else {
+			        	centerOnHash(result.aggregations.wifigrid.buckets[0].key);
+			        	angular.extend($scope,{	
+			    			cellgeohash:{
+			    				data:result.aggregations.wifigrid,
+			    				options:cellGeoHashOptions()
+			        		}
+			    		})
+			        }
 		    		
 		        });
 		    }
@@ -127,6 +157,14 @@ angular.module('celllogger')
 				$scope.geohash=null;
 			$scope.cellgeohash=null;
 		}
+		
+		$scope.openCalendar = function($event) {
+			
+			$event.preventDefault();
+			$event.stopPropagation();
+
+			$scope.opened = true;
+		};
 
 //MAP STUFF
 
@@ -163,7 +201,14 @@ angular.module('celllogger')
 			}
 			$scope.wifis=[];
 			clearMap(true);
-
+			
+			if ($scope.search.range) {
+				params.datePrecision = $scope.search.range;
+			}
+  			if($scope.search.dt){
+  				params.timestamp=new Date($scope.search.dt).getTime();
+  			}
+  			
 			$http.get(WEBSERVICEWIFI + '/wifis',{
 	        	params:params
 	        })

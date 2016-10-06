@@ -7,7 +7,7 @@ angular.module('celllogger')
 	
   	.controller('WifiCoverageCtrl', function ($scope,$http,leafletData,$filter,AlertService,MAPSERVER,WEBSERVICEWIFI) {
 
-  		$scope.search={range:30,encryptiontype:'all'};
+  		$scope.search={range:365,encryptiontype:'all'};
   		$scope.providers=[];
 		$scope.desaturate=false;
 
@@ -18,7 +18,7 @@ angular.module('celllogger')
 
 		$scope.formats = ['dd-MM-yyyy', 'yyyy/MM/dd', 'dd.MM.yyyy', 'shortDate'];
 		$scope.format = $scope.formats[0];
-
+		
 		function getGeoHashes(){
 			$http.defaults.useXDomain=true;
 			
@@ -54,6 +54,10 @@ angular.module('celllogger')
 					top_right:[$scope.bounds.northEast.lat,$scope.bounds.northEast.lng]
 				};
 
+				if ($scope.search.range) {
+					params.datePrecision = $scope.search.range;
+				}
+				
 				if($scope.search.encryptiontype!=='all')
 	  				params.encryptiontype=$scope.search.encryptiontype;
 
@@ -68,13 +72,8 @@ angular.module('celllogger')
 		        	console.log(err);
 		        })
 		        .success(function(result){
-		        	
-		        	
 		        	$scope.distinctcount=result.wifis.value;
-		        	
 		        })
-
-
 
 		  		$http.get(WEBSERVICEWIFI + '/coverage',{
 		            params: params
@@ -83,8 +82,6 @@ angular.module('celllogger')
 		        	console.log(err);
 		        })
 		        .success(function(result){
-		        	
-
 		        	$scope.measurementcount=result.hits.total;
 		        	var maxValue=0;
 		        	
@@ -114,8 +111,6 @@ angular.module('celllogger')
 						return options;
 					}
 
-
-
 		        	angular.extend($scope,{
 	        			geohash:{
 	        				data:result.aggregations.cellgrid,
@@ -129,7 +124,7 @@ angular.module('celllogger')
 
 		function getTotal(){
 			var params={
-				datePrecision:730
+				datePrecision:7000
 			}
 
 			$http.get(WEBSERVICEWIFI+'/measurementcount',{
@@ -236,6 +231,8 @@ angular.module('celllogger')
   				}
 	  			if($scope.search.dt){
 	  				params.dt=new Date($scope.search.dt).getTime();
+	  			}
+	  			if ($scope.search.range){
 	  				params.range=$scope.search.range;
 	  			}
 	  			
@@ -285,19 +282,11 @@ angular.module('celllogger')
 
 
 //MAP STUFF  		
-  		
-  		
-  		var markers={};
+   		var markers={};
   		var paths={
 
   		};
-  		
-
-		
-
-		angular.extend($scope, {
-
-
+ 		angular.extend($scope, {
 	   		defaults: {
 	   			scrollWheelZoom:false
 	   		},

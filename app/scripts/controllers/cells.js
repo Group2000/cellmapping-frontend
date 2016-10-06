@@ -221,7 +221,7 @@ angular
 							params.datePrecision = 730;
 						}
 						if ($scope.search.dt) {
-							params.timestamp = new Date($scope.search.dt)
+							params.timestamp = new Date($scope.search.dt).getTime();
 						}
 						$http
 								.get(WEBSERVICE + '/cellcoverage', {
