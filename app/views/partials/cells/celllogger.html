@@ -163,7 +163,7 @@
 										</div>
 									</div>
 									<div class="form-group">
-										<label class="col-sm-2 control-label" for="inputStart">Date: </label>
+										<label class="col-sm-2 control-label" for="inputStart" title="Date to query from" data-toggle="tooltip">Date: </label>
 										<div class="col-sm-5">
 											<p class="input-group">
 
@@ -174,19 +174,17 @@
 								            </p>
 								        </div>
 						            </div>
-						           <!--  <div class="form-group">
-						            	<label class="col-sm-2 control-label" for="inputStart">Range in days: </label>
+						            <div class="form-group">
+						            	<label class="col-sm-2 control-label" for="inputStart" title="Range in days from the selected date" data-toggle="tooltip">Range in days: </label>
 										<div class="col-sm-5">
 						              		<input type="text" class="form-control" ng-model="search.range"/>
 						              	</div>
-						            </div> -->
+						            </div>
 						            <div class="form-group">
 										<label class="col-sm-2 control-label" for="inputStart">Provider: </label>
 										<div class="col-sm-5">
-
-
 											<select class="form-control" ng-options="provider.mccmnc as provider.name for provider in providers" ng-model="search.mccmnc"><option value=""></option></select>
-
+											<a ui-sref="provider">Add Provider</a>
 										</div>
 									</div>
 						           

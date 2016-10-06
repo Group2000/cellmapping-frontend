@@ -41,6 +41,13 @@ angular.module('celllogger', [
             data: {
             }
         });
+        $stateProvider.state('provider',{
+            url:'/provider',
+            templateUrl:'/partials/cells/provider.html',
+            controller: 'ProviderCtrl',
+            data: {
+            }
+        });
         $stateProvider.state('celllogger',{
             url:'/celllogger',
             templateUrl:'/partials/cells/celllogger.html',

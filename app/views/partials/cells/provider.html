@@ -1,0 +1,66 @@
+<div id="page-wrapper">
+
+    <div class="container-fluid">
+
+ <!-- Page Heading -->
+ 
+        <div class="row">
+            <div class="col-lg-12">
+                <h1 class="page-header">
+                    Add Provider
+                </h1>
+
+            </div>
+        </div>
+
+    
+
+
+        <div ng-repeat="alert in alerts">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="alert alert-{{alert.type}} alert-dismissable">
+                    <!-- <div class="alert alert-info alert-dismissable"> -->
+                        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                        <i class="fa fa-info-circle"></i>  {{alert.msg}}
+                    </div>
+                </div>
+            </div>
+        </div>
+
+<!-- panels-->
+
+		<div class="row">
+            <div class="col-lg-12">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h3 class="panel-title"><i class="fa fa-filter fa-fw"></i> Add Provider </h3>
+                    </div>
+                    <div class="panel-body">
+						<form name="providerForm" novalidate class="form-horizontal form-group"  >
+								<label class="control=label" for="inputStart">MCC: </label>
+								<input type="text" class="form-control" placeholder="MCC" ng-model="prov.mcc" />
+								<label class="control=label" for="inputStart">MNC: </label>
+								<input type="text" class="form-control" placeholder="MNC" ng-model="prov.mnc" />
+								<label class="control=label" for="inputStart">Country: </label>
+								 <input type="text" class="form-control" placeholder="Country" ng-model="prov.country" />
+								<label class="control=label" for="inputStart">ISO Country: </label>
+								 <input type="text" class="form-control" placeholder="Iso" ng-model="prov.iso" />
+								 <label class="control=label" for="inputStart">Brand: </label>
+								 <input type="text" class="form-control" placeholder="Brand" ng-model="prov.brand" />
+								 <label class="control=label" for="inputStart">Display name: </label>
+								 <input type="text" class="form-control" placeholder="Name" ng-model="prov.name" />
+								 
+								<button type="submit" class="btn btn-success" ng-click="addProvider()" ng-disabled="providerForm.$invalid">Add</button>	
+						</form>
+                    </div>
+                </div>
+            </div>
+        </div> 
+
+
+    </div>
+    <!-- /.container-fluid -->
+
+</div>
+<!-- /#page-wrapper -->
