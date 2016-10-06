@@ -136,11 +136,9 @@ angular
 							}).error(function(err) {
 								console.log(err);
 							}).success(function(result) {
-
 								$scope.distinctcount = result.cells.value;
-
 							})
-
+					
 							$http
 									.get(WEBSERVICE + '/coverage', {
 										params : params
@@ -150,9 +148,21 @@ angular
 									})
 									.success(
 											function(result) {
-
 												$scope.measurementcount = result.hits.total;
 
+												if ($scope.measurementcount == "0"){
+													angular
+													.extend(
+															$scope,
+															{
+																geohash : {
+																	data : null,
+																	options : null
+																}
+															})
+												} else {
+												
+												
 												var maxValue = result.aggregations.cellgrid.buckets[0].doc_count;
 
 												var colorFunction = new L.HSLHueFunction(
@@ -199,6 +209,7 @@ angular
 																		options : geoHashOptions()
 																	}
 																})
+												}
 											})
 							$scope.mouseclass = null;
 						}
