@@ -502,7 +502,7 @@ angular
 
 					$scope.$on('leafletDirectiveMap.baselayerchange', function(
 							event, args) {
-						if (args.leafletEvent.name === 'OSM') {
+						if (args.leafletEvent.name === 'OSM' || args.leafletEvent.name === 'OpenStreetMap') {
 							$scope.desaturate = true;
 						} else {
 							$scope.desaturate = false;
