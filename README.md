@@ -60,6 +60,7 @@ npm install
 cd ../cellmapping-frontend
 npm install
 npm install grunt-google-cdn
+grunt compass
 
 </pre>
 edit /opt/cellmapping-frontend/app/scripts/config.js to configure map server:
