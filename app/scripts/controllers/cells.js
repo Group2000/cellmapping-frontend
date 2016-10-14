@@ -319,7 +319,7 @@ angular
 							var params = {}
 
 							params.uuid = hit.uuid;
-
+							
 							$http.defaults.useXDomain = true;
 
 							$http.get(WEBSERVICE, {
@@ -600,6 +600,13 @@ angular
 							serving : true
 						}
 						$scope.cells = [];
+						if ($scope.search.dt) {
+							params.timestamp = new Date($scope.search.dt)
+									.getTime();
+						}
+						if ($scope.search.range) {
+							params.datePrecision = $scope.search.range;
+						}
 						clearMap(true);
 						$http.get(WEBSERVICE + '/cells', {
 							params : params
