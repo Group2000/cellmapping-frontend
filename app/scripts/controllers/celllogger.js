@@ -185,6 +185,7 @@ angular
 														geohashField : 'key',
 														displayOptions : {
 															doc_count : {
+																displayName: 'Nr measurements',
 																color : colorFunction,
 																fillColor : fillColorFunction,
 																gradient : false
@@ -195,7 +196,11 @@ angular
 															opacity : 1,
 															weight : 1,
 															gradient : true
-														}
+														},
+														tooltipOptions: {
+										                    iconSize: new L.Point(80,55),
+										                    iconAnchor: new L.Point(-5,55)
+										                }
 													};
 													return options;
 												}
