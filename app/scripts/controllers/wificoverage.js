@@ -96,7 +96,7 @@ angular.module('celllogger')
 							geohashField: 'key',
 							displayOptions: {
 								doc_count: {
-									displayName: 'Nr measurements',
+									displayName: 'Nr meas.:',
 									color: colorFunction,
 									fillColor: fillColorFunction,
 									gradient: false
