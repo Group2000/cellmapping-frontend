@@ -186,10 +186,6 @@ angular.module('celllogger')
 				},
 			},
 	        events: {
-	        	map: {
-	        		enable: ['click'],
-	        		logic:'emit'
-	        	}
 	        }
 		});
 
@@ -228,5 +224,16 @@ angular.module('celllogger')
 	        })
 
 		});
+		
+		$scope.$on('leafletDirectiveMap.baselayerchange', function(
+				event, args) {
+			if (args.leafletEvent.name === 'OSM' || args.leafletEvent.name === 'OpenStreetMap') {
+				$scope.desaturate = true;
+			} else {
+				$scope.desaturate = false;
+			}
+			;
+		});
+
 
   	});
