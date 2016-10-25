@@ -187,14 +187,14 @@ angular
 						if ($scope.search.lac) {
 							params.area = $scope.search.lac;
 						}
-//Not implemented in webservice
-//						if ($scope.search.dt) {
-//							params.timestamp = new Date($scope.search.dt)
-//									.getTime();
-//						}
-//						if ($scope.search.range) {
-//							params.datePrecision = $scope.search.range;
-//						}
+
+						if ($scope.search.dt) {
+							params.timestamp = new Date($scope.search.dt)
+									.getTime();
+						}
+						if ($scope.search.range) {
+							params.datePrecision = $scope.search.range;
+						}
 						// $http.defaults.useXDomain=true;
 
 						$http.get(WEBSERVICE, {
