@@ -143,12 +143,14 @@ angular
 					function centerOnHash() {
 						leafletData.getMap().then(function(map) {
 							var latlngs = [];
-                            for (var i in $scope.cellgeohash.data.buckets) {
-                                var coord = geohash.decode( $scope.cellgeohash.data.buckets[i].key);
-                                var center = L.latLng(coord.latitude, coord.longitude);
-                                latlngs.push(center);
-                                }
-                            map.fitBounds(latlngs);
+							if ($scope.cellgeohash.data){
+								for (var i in $scope.cellgeohash.data.buckets) {
+	                                var coord = geohash.decode( $scope.cellgeohash.data.buckets[i].key);
+	                                var center = L.latLng(coord.latitude, coord.longitude);
+	                                latlngs.push(center);
+	                                }
+	                            map.fitBounds(latlngs);
+							}
 						});
 					}
 
@@ -616,8 +618,6 @@ angular
 									options : geoHashOptions()
 								}
 							})
-							centerOnHash();
-
 							$scope.cells = result.results;
 
 							$scope.cells.forEach(function(cell) {

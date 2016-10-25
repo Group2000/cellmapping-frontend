@@ -67,12 +67,14 @@ angular.module('celllogger')
 		function centerOnHash() {
 			leafletData.getMap().then(function(map) {
 				var latlngs = [];
-                for (var i in $scope.cellgeohash.data.buckets) {
-                    var coord = geohash.decode( $scope.cellgeohash.data.buckets[i].key);
-                    var center = L.latLng(coord.latitude, coord.longitude);
-                    latlngs.push(center);
-                    }
-                map.fitBounds(latlngs);
+				if ($scope.cellgeohash.data){
+	                for (var i in $scope.cellgeohash.data.buckets) {
+	                    var coord = geohash.decode( $scope.cellgeohash.data.buckets[i].key);
+	                    var center = L.latLng(coord.latitude, coord.longitude);
+	                    latlngs.push(center);
+	                    }
+	                map.fitBounds(latlngs);
+				}
 			});
 		}
 
@@ -223,7 +225,6 @@ angular.module('celllogger')
 	    				options:geoHashOptions()
 	        		}
 	    		})
-	    		centerOnHash();
 	    		$scope.wifis=result.results;
 
 	        })
