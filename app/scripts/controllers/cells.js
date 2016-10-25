@@ -140,16 +140,15 @@ angular
 						});
 					}
 
-					function centerOnHash(geoHash, zoom) {
-
-						var marker = (geohash.decode(geoHash));
-						var _center = L.latLng(marker.latitude,
-								marker.longitude);
+					function centerOnHash() {
 						leafletData.getMap().then(function(map) {
-							if (angular.isDefined(zoom)) {
-								map.setZoom(zoom);
-							}
-							map.panTo(_center);
+							var latlngs = [];
+                            for (var i in $scope.cellgeohash.data.buckets) {
+                                var coord = geohash.decode( $scope.cellgeohash.data.buckets[i].key);
+                                var center = L.latLng(coord.latitude, coord.longitude);
+                                latlngs.push(center);
+                                }
+                            map.fitBounds(latlngs);
 						});
 					}
 
@@ -239,14 +238,6 @@ angular
 										function(result) {
 											console.log(result);
 											if (result.aggregations.cellgrid.buckets.length > 0) {
-												var centerGrid = result.aggregations.cellgrid.buckets[0];
-												result.aggregations.cellgrid.buckets
-														.forEach(function(grid) {
-															if (grid.maxSignal > centerGrid.maxSignal)
-																centerGrid = grid
-
-														})
-												centerOnHash(centerGrid.key);
 												angular
 														.extend(
 																$scope,
@@ -256,6 +247,7 @@ angular
 																		options : cellGeoHashOptions()
 																	}
 																})
+												centerOnHash();
 											} else {
 												$scope.detail = {
 													message : 'No data available, check serving/neigbour settings'
@@ -618,14 +610,13 @@ angular
 						}).error(function(err) {
 							console.log(err);
 						}).success(function(result) {
-
-							centerOnHash(result.geohashes[0].key);
 							angular.extend($scope, {
 								geohash : {
 									data : result,
 									options : geoHashOptions()
 								}
 							})
+							centerOnHash();
 
 							$scope.cells = result.results;
 

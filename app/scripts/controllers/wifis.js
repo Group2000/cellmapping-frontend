@@ -64,16 +64,16 @@ angular.module('celllogger')
 		}
 		
 
-		function centerOnHash(geoHash,zoom){
-			
-			var marker=(geohash.decode(geoHash));
-			var _center=L.latLng(marker.latitude,marker.longitude);
-			leafletData.getMap().then(function(map){
-				if(angular.isDefined(zoom)){
-	       			map.setZoom(zoom);
-				}
-	       		map.panTo(_center);
-	       	});
+		function centerOnHash() {
+			leafletData.getMap().then(function(map) {
+				var latlngs = [];
+                for (var i in $scope.cellgeohash.data.buckets) {
+                    var coord = geohash.decode( $scope.cellgeohash.data.buckets[i].key);
+                    var center = L.latLng(coord.latitude, coord.longitude);
+                    latlngs.push(center);
+                    }
+                map.fitBounds(latlngs);
+			});
 		}
 
 	  	$scope.getWifi=function(){
@@ -141,13 +141,13 @@ angular.module('celllogger')
 			        		}
 			    		})
 		        	} else {
-			        	centerOnHash(result.aggregations.wifigrid.buckets[0].key);
 			        	angular.extend($scope,{	
 			    			cellgeohash:{
 			    				data:result.aggregations.wifigrid,
 			    				options:cellGeoHashOptions()
 			        		}
 			    		})
+			    		centerOnHash();
 			        }
 		    		
 		        });
@@ -217,13 +217,13 @@ angular.module('celllogger')
 				console.log(err);
 	        })
 	        .success(function(result){
-		        centerOnHash(result.geohashes[0].key);
 	        	angular.extend($scope,{
 	    			geohash:{
 	    				data:result,
 	    				options:geoHashOptions()
 	        		}
 	    		})
+	    		centerOnHash();
 	    		$scope.wifis=result.results;
 
 	        })
