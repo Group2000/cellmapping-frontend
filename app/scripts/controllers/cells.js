@@ -391,8 +391,6 @@ angular
 												result.hits.hits
 														.forEach(function(
 																provider) {
-															console
-																	.log(provider._id);
 															cache[provider._id] = provider._source.brand
 																	+ ', '
 																	+ provider._source.name;
