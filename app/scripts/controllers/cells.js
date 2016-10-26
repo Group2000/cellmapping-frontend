@@ -12,6 +12,7 @@ angular
 
 					$scope.desaturate = true;
 					var markers = {};
+					var cache = {};
 					$scope.cells = [];
 					$scope.search = {
 						geohashPrecision : 7,
@@ -203,7 +204,6 @@ angular
 						}).error(function(error) {
 							console.log(error);
 						}).success(function(result) {
-
 							$scope.cells = result;
 							$scope.cells.forEach(function(cell) {
 								lookupMNC(cell);
@@ -351,23 +351,58 @@ angular
 							mcc : cell.mcc
 						}
 
+						if (cache[mcc + "-" + mnc]) {
+							cell.provider = cache[mcc + "-" + mnc];
+						} else {
+							$http
+									.get(WEBSERVICE + '/provider', {
+										params : params
+									})
+									.error(function(error) {
+										console.log(error);
+										cell.provider = 'unknown'
+									})
+									.success(
+											function(result) {
+												if (result.hits.hits[0] != undefined) {
+													cell.provider = result.hits.hits[0]._source.brand
+															+ ', '
+															+ result.hits.hits[0]._source.name;
+													cache[mcc + "-" + mnc] = cell.provider;
+												} else {
+													cell.provider = "-";
+													cache[mcc + "-" + mnc] = cell.provider;
+												}
+
+											});
+						}
+					}
+
+										
+					function fillProviderCache() {
 						$http
-								.get(WEBSERVICE + '/provider', {
-									params : params
-								})
+								.get(WEBSERVICE + '/provider', {})
 								.error(function(error) {
 									console.log(error);
-									cell.provider = 'unknown'
 								})
 								.success(
 										function(result) {
 											if (result.hits.hits[0] != undefined) {
-												cell.provider = result.hits.hits[0]._source.brand
-														+ ', '
-														+ result.hits.hits[0]._source.name;
+												result.hits.hits
+														.forEach(function(
+																provider) {
+															console
+																	.log(provider._id);
+															cache[provider._id] = provider._source.brand
+																	+ ', '
+																	+ provider._source.name;
+														})
 											}
 										});
+
 					}
+
+					fillProviderCache();
 
 					$scope.addToMap = function(hit) {
 						clearMap(false);
@@ -619,7 +654,7 @@ angular
 								}
 							})
 							$scope.cells = result.results;
-
+							var cache = [];
 							$scope.cells.forEach(function(cell) {
 								lookupMNC(cell);
 							})
