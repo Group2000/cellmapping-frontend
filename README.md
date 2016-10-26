@@ -1,6 +1,8 @@
 # cellmapping-frontend
 Front-end to view measurements from LIMA Cell Monitor
 
+See https://github.com/Group2000/cellmapping-frontend/wiki for a description of the front end.
+
 # Installation
 ##Note
 Replace ip-address in all configuration files with the ip address of the server
