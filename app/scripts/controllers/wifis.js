@@ -9,7 +9,6 @@ angular.module('celllogger')
 
   		$scope.desaturate=false;
   		$scope.search={range:365, size:30};
-  		}
 
 		$scope.dateOptions = {
 				formatYear: 'yy',
