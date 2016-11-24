@@ -8,7 +8,8 @@ angular.module('celllogger')
   	.controller('WifiCtrl', function ($scope,$http,leafletData,$filter,AlertService,MAPSERVER,WEBSERVICEWIFI,geohash) {
 
   		$scope.desaturate=false;
-  		$scope.search={range:365};
+  		$scope.search={range:365, size:30};
+  		}
 
 		$scope.dateOptions = {
 				formatYear: 'yy',
@@ -93,7 +94,9 @@ angular.module('celllogger')
   			if($scope.search.dt){
   				params.timestamp=new Date($scope.search.dt).getTime();
   			}
-  			
+  			if($scope.search.size){
+  				params.size = $scope.search.size;
+  			}			
 	  		$http.get(WEBSERVICEWIFI,{
 	  			params:params
 	  		})
