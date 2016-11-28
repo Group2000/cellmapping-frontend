@@ -25,6 +25,7 @@ rpm --import https://www.rabbitmq.com/rabbitmq-signing-key-public.asc
 yum -y install rabbitmq-server
 
 chkconfig rabbitmq-server on
+yum -y group install "Development Tools"
 
 yum -y install npm
 yum -y install git
