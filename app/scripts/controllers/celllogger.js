@@ -486,7 +486,6 @@ angular
 							baselayers : {
 								osm : MAPSERVER.osm,
 								osmCache : MAPSERVER.osmCache,
-								// basic:MAPSERVER.mapbox_streets_basics,
 								luchtfoto : MAPSERVER.luchtfoto
 							},
 						},
