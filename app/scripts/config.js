@@ -1,8 +1,8 @@
 "use strict";
 
-angular.module('config', [])
-
 var ip = 'SERVERIP'
+	
+angular.module('config', [])
 
 .constant('ENV', 'production')
 
