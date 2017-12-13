@@ -485,6 +485,7 @@ angular
 						layers : {
 							baselayers : {
 								osm : MAPSERVER.osm,
+								osmCache : MAPSERVER.osmCache,
 								// basic:MAPSERVER.mapbox_streets_basics,
 								luchtfoto : MAPSERVER.luchtfoto
 							},
@@ -507,7 +508,7 @@ angular
 
 					$scope.$on('leafletDirectiveMap.baselayerchange', function(
 							event, args) {
-						if (args.leafletEvent.name === 'OSM' || args.leafletEvent.name === 'OpenStreetMap') {
+						if (args.leafletEvent.name === 'OSM' || args.leafletEvent.name === 'OpenStreetMap' || args.leafletEvent.name === 'OpenStreetMap cache') {
 							$scope.desaturate = true;
 						} else {
 							$scope.desaturate = false;
