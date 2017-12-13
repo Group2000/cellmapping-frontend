@@ -6,9 +6,9 @@ var ip = 'SERVERIP'
 
 .constant('ENV', 'production')
 
-.constant('WEBSERVICE', 'https://' + ip + ':3001/v1/cellmeasurements-dev')
+.constant('WEBSERVICE', 'http://' + ip + ':3001/v1/cellmeasurements-dev')
 
-.constant('WEBSERVICEWIFI', 'https://' + ip + ':3002/v1/wifimeasurements-dev')
+.constant('WEBSERVICEWIFI', 'http://' + ip + ':3002/v1/wifimeasurements-dev')
 
 .constant('MAXS2LEVEL', 16)
 
