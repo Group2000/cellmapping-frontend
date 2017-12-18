@@ -4,7 +4,12 @@ Front-end to view measurements from LIMA Cell Monitor
 See https://github.com/Group2000/cellmapping-frontend/wiki for a description of the front end.
 
 # Installation
-##Note
+
+<H2>Docker version </H2>
+<B>A new Docker version of the installation is available at https://hub.docker.com/r/group2000/cmbackend/ </B>
+
+
+## Note
 Replace ip-address in all configuration files with the ip address of the server
 The installation commands are based on a Centos 7 installation<BR>
 First parts have to be installed as user root.
