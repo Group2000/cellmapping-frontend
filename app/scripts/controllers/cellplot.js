@@ -409,9 +409,9 @@ angular.module('celllogger')
 	        }
 		});
 
-
-
-
+		leafletData.getMap().then(function(map) {
+	        map.restoreView();
+		});
 
 		$scope.$on('leafletDirectiveMap.click',function(event,args){
 			// // console.log(args.leafletEvent.latlng);

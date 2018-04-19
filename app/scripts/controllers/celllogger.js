@@ -504,6 +504,10 @@ angular
 							}
 						}
 					});
+					
+					leafletData.getMap().then(function(map) {
+				        map.restoreView();
+					});
 
 					$scope.$on('leafletDirectiveMap.baselayerchange', function(
 							event, args) {

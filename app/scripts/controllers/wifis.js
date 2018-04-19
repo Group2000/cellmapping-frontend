@@ -197,6 +197,10 @@ angular.module('celllogger')
 	        events: {
 	        }
 		});
+		
+		leafletData.getMap().then(function(map) {
+	        map.restoreView();
+		});
 
 		$scope.$on('leafletDirectiveMap.click',function(event,args){
 			var params={

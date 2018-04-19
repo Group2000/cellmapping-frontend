@@ -307,6 +307,11 @@ angular.module('celllogger')
 	        	}
 	        }
 		});
+		
+		leafletData.getMap().then(function(map) {
+	        map.restoreView();	      
+		});
+
 //END MAP STUFF
 
   	})
