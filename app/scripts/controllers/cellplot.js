@@ -397,7 +397,7 @@ angular.module('celllogger')
 				baselayers:{
 					
 					osm:MAPSERVER.osm,
-					basic:MAPSERVER.mapbox_streets_basics,
+					osmCache : MAPSERVER.osmCache,
 					luchtfoto: MAPSERVER.luchtfoto
 				},
 			},
@@ -409,9 +409,9 @@ angular.module('celllogger')
 	        }
 		});
 
-
-
-
+		leafletData.getMap().then(function(map) {
+	        map.restoreView();
+		});
 
 		$scope.$on('leafletDirectiveMap.click',function(event,args){
 			// // console.log(args.leafletEvent.latlng);
@@ -455,8 +455,15 @@ angular.module('celllogger')
 
 		});
 
-
-
+		$scope.$on('leafletDirectiveMap.baselayerchange', function(
+				event, args) {
+			if (args.leafletEvent.name === 'OSM' || args.leafletEvent.name === 'OpenStreetMap' || args.leafletEvent.name === 'OpenStreetMap cache') {
+				$scope.desaturate = true;
+			} else {
+				$scope.desaturate = false;
+			}
+			;
+		});
 
 
   	});

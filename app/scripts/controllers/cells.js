@@ -599,7 +599,7 @@ angular
 						layers : {
 							baselayers : {
 								osm : MAPSERVER.osm,
-								basic : MAPSERVER.mapbox_streets_basics,
+								osmCache : MAPSERVER.osmCache,
 								luchtfoto : MAPSERVER.luchtfoto
 							},
 						},
@@ -612,9 +612,13 @@ angular
 						}
 					});
 
+					leafletData.getMap().then(function(map) {
+				        map.restoreView();
+					});
+
 					$scope.$on('leafletDirectiveMap.baselayerchange', function(
 							event, args) {
-						if (args.leafletEvent.name === 'OSM' || args.leafletEvent.name === 'OpenStreetMap') {
+						if (args.leafletEvent.name === 'OSM' || args.leafletEvent.name === 'OpenStreetMap' || args.leafletEvent.name === 'OpenStreetMap cache') {
 							$scope.desaturate = true;
 						} else {
 							$scope.desaturate = false;

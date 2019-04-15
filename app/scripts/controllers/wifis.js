@@ -190,12 +190,16 @@ angular.module('celllogger')
 	        layers:{
 				baselayers:{
 					osm:MAPSERVER.osm,
-					basic:MAPSERVER.mapbox_streets_basics,
+					osmCache : MAPSERVER.osmCache,
 					luchtfoto: MAPSERVER.luchtfoto
 				},
 			},
 	        events: {
 	        }
+		});
+		
+		leafletData.getMap().then(function(map) {
+	        map.restoreView();
 		});
 
 		$scope.$on('leafletDirectiveMap.click',function(event,args){
@@ -235,7 +239,7 @@ angular.module('celllogger')
 		
 		$scope.$on('leafletDirectiveMap.baselayerchange', function(
 				event, args) {
-			if (args.leafletEvent.name === 'OSM' || args.leafletEvent.name === 'OpenStreetMap') {
+			if (args.leafletEvent.name === 'OSM' || args.leafletEvent.name === 'OpenStreetMap' || args.leafletEvent.name === 'OpenStreetMap cache') {
 				$scope.desaturate = true;
 			} else {
 				$scope.desaturate = false;

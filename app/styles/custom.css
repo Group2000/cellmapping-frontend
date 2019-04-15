@@ -1,0 +1,247 @@
+/* line 3, ../../app/styles/custom.scss */
+body {
+  padding-bottom: 70px;
+}
+
+/* line 9, ../../app/styles/custom.scss */
+.ngGridLarge {
+  height: 650px;
+}
+
+/* line 13, ../../app/styles/custom.scss */
+.logDate {
+  color: grey;
+  font-size: 90%;
+}
+
+/* line 18, ../../app/styles/custom.scss */
+.logEntry {
+  border-bottom: 1px solid #e5e5e5;
+}
+
+/* line 22, ../../app/styles/custom.scss */
+.geheim {
+  padding-top: 12px;
+  padding-right: 20px;
+  color: red;
+  padding-bottom: 12px;
+}
+
+/* line 29, ../../app/styles/custom.scss */
+.footer-margin-right {
+  margin-top: 5px;
+  margin-right: 20px;
+}
+
+/* line 34, ../../app/styles/custom.scss */
+.footer-margin-left {
+  margin-top: 5px;
+  margin-left: 20px;
+}
+
+/* line 39, ../../app/styles/custom.scss */
+.pagination {
+  margin: 0px;
+}
+
+/* line 43, ../../app/styles/custom.scss */
+.notset {
+  color: grey;
+  font-size: 90%;
+}
+
+/* line 49, ../../app/styles/custom.scss */
+.clickable tr {
+  cursor: pointer;
+}
+
+/* line 53, ../../app/styles/custom.scss */
+.page-header {
+  margin: 0px;
+}
+
+/* line 56, ../../app/styles/custom.scss */
+.red {
+  color: red;
+}
+
+/* line 60, ../../app/styles/custom.scss */
+#searchclear {
+  position: absolute;
+  right: 5px;
+  top: 0px;
+  bottom: 0px;
+  height: 14px;
+  margin: auto;
+  font-size: 14px;
+  cursor: pointer;
+  color: #ccc;
+}
+
+/* line 71, ../../app/styles/custom.scss */
+#chart svg {
+  height: 400px;
+}
+
+/* line 74, ../../app/styles/custom.scss */
+.panel-heading {
+  font-size: 120%;
+  font-weight: bold;
+}
+
+/* line 79, ../../app/styles/custom.scss */
+.dl-horizontal dt {
+  text-align: left;
+  float: left;
+}
+
+/* line 84, ../../app/styles/custom.scss */
+.dl-horizontal dd {
+  margin: 0 0 0 1em;
+}
+
+/* line 88, ../../app/styles/custom.scss */
+.clickable {
+  cursor: pointer;
+  cursor: hand;
+}
+
+/* line 93, ../../app/styles/custom.scss */
+.collapsebutton {
+  font-size: 120%;
+}
+
+/* line 96, ../../app/styles/custom.scss */
+.panel-heading a {
+  text-decoration: none;
+}
+
+/* line 99, ../../app/styles/custom.scss */
+.panel-heading a:after {
+  font-family: "FontAwesome";
+  content: "\f150";
+  float: right;
+  color: grey;
+}
+
+/* line 105, ../../app/styles/custom.scss */
+.panel-heading a.collapsed:after {
+  font-family: "FontAwesome";
+  content: "\f013";
+}
+
+/* line 110, ../../app/styles/custom.scss */
+.alert-top {
+  margin-top: -20px;
+}
+
+/* line 115, ../../app/styles/custom.scss */
+.angular-leaflet-map {
+  width: 640px;
+  height: 400px;
+}
+
+/* line 120, ../../app/styles/custom.scss */
+.bottom-align-text {
+  margin-top: 60px;
+}
+
+/* line 125, ../../app/styles/custom.scss */
+.green {
+  background-color: green !important;
+}
+
+/* ----------------------CAL HEATMAP---------------------- */
+/* line 132, ../../app/styles/custom.scss */
+text.highlight {
+  fill: black;
+  font-weight: bold;
+}
+
+/* line 136, ../../app/styles/custom.scss */
+rect.highlight {
+  stroke-width: 1;
+  stroke: black;
+}
+
+/* line 141, ../../app/styles/custom.scss */
+text.now {
+  font-weight: bold;
+}
+
+/* line 145, ../../app/styles/custom.scss */
+.bigger {
+  font-size: 20px;
+}
+
+/* line 150, ../../app/styles/custom.scss */
+.axis path .axis line {
+  fill: none;
+  stroke: black;
+  shape-rendering: crispEdges;
+}
+
+/* line 156, ../../app/styles/custom.scss */
+.axis path {
+  fill: none;
+  stroke: black;
+}
+
+/* line 161, ../../app/styles/custom.scss */
+.line {
+  fill: none;
+  stroke: steelblue;
+  stroke-width: 1.5px;
+}
+
+/* line 168, ../../app/styles/custom.scss */
+.graphinfo {
+  font-size: 180%;
+  font-weight: bold;
+  fill: black;
+}
+
+/* line 173, ../../app/styles/custom.scss */
+.graphtext {
+  font-size: 100%;
+}
+
+/* line 177, ../../app/styles/custom.scss */
+.chartblack {
+  fill: black;
+}
+
+/* line 180, ../../app/styles/custom.scss */
+.chartred {
+  fill: red;
+}
+
+/* line 183, ../../app/styles/custom.scss */
+.chartwhite {
+  fill: white;
+}
+
+/* line 191, ../../app/styles/custom.scss */
+.container-fluid {
+  padding-left: 0px;
+  padding-right: 0px;
+  padding-top: 0px;
+}
+
+/* line 197, ../../app/styles/custom.scss */
+.activetr {
+  background: orange !important;
+}
+
+/* line 201, ../../app/styles/custom.scss */
+.wait {
+  cursor: wait;
+}
+
+/* line 209, ../../app/styles/custom.scss */
+.desaturate .leaflet-tile-loaded {
+  -webkit-filter: brightness(1.03) grayscale(0.83) contrast(1.07);
+  -moz-filter: brightness(1.03) grayscale(0.83) contrast(1.07);
+  -ms-filter: brightness(1.03) grayscale(0.83) contrast(1.07);
+  filter: brightness(1.03) grayscale(0.83) contrast(1.07);
+}
