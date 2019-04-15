@@ -168,6 +168,18 @@
 					                     		<dt ng-if='bucket.topsignalhit.hits.hits[0]._source.beamwidth!==undefined'>Beam Width</dt>
 					                     		<dd ng-if='bucket.topsignalhit.hits.hits[0]._source.beamwidth!==undefined'>{{bucket.topsignalhit.hits.hits[0]._source.beamwidth}} </dd>
 					                     		
+					                     		<dt ng-if='bucket.topsignalhit.hits.hits[0]._source.radio=="GSM"'>ARFCN</dt>
+					                     		<dd ng-if='bucket.topsignalhit.hits.hits[0]._source.radio=="GSM"'>{{bucket.topsignalhit.hits.hits[0]._source.channel}}</dd>
+					                     		
+					                     		<dt ng-if='bucket.topsignalhit.hits.hits[0]._source.radio=="UMTS"'>UARFCN</dt>
+					                     		<dd ng-if='bucket.topsignalhit.hits.hits[0]._source.radio=="UMTS"'>{{bucket.topsignalhit.hits.hits[0]._source.channel}}</dd>
+					                     		<dt ng-if='bucket.topsignalhit.hits.hits[0]._source.radio=="UMTS"'>PSC</dt>
+					                     		<dd ng-if='bucket.topsignalhit.hits.hits[0]._source.radio=="UMTS"'>{{bucket.topsignalhit.hits.hits[0]._source.unit}}</dd>
+					                     		
+					                     		<dt ng-if='bucket.topsignalhit.hits.hits[0]._source.radio=="LTE"'>EARFCN</dt>
+					                     		<dd ng-if='bucket.topsignalhit.hits.hits[0]._source.radio=="LTE"'>{{bucket.topsignalhit.hits.hits[0]._source.channel}}</dd>
+					                     		<dt ng-if='bucket.topsignalhit.hits.hits[0]._source.radio=="LTE"'>PCI</dt>
+					                     		<dd ng-if='bucket.topsignalhit.hits.hits[0]._source.radio=="LTE"'>{{bucket.topsignalhit.hits.hits[0]._source.unit}}</dd>
 					                     	</dl>
 					                     </p>
 				                     </li>
